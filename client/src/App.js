@@ -16,6 +16,9 @@ function App() {
       .then((data) => setUser(data));
   }, []);
 
+  function handleGroupingSubmit(e) {
+    console.log(e)
+  }
 
   return (
     <BrowserRouter>
@@ -24,8 +27,8 @@ function App() {
         <Routes>
           <Route exact path="/testing" element={<h1>Test Route</h1>}/>
           <Route exact path="/"  element={<Landing user={user}/>}/>
-          <Route exact path="/rules/grouping" element={<GroupingRules />}/>
-          <Route exact path="/rules/filtering" element={<FilteringRules />}/>            
+          <Route exact path="/rules/grouping" element={<GroupingRules handleGroupingSubmit={handleGroupingSubmit}/>}/>
+          <Route exact path="/rules/filtering" element={<FilteringRules />}/>
           <Route exact path="/rules/songorder" element={<SongOrderRules />}/>
           <Route exact path="/dashboard" element={<Dashboard />}/>
         </Routes>

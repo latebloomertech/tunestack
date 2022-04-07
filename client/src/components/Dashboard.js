@@ -4,7 +4,7 @@ import PlaylistBoard from "./PlaylistBoard"
 
 function Dashboard() {
   return (
-    <div classname="dashboard-container">
+    <div>
         <div className='settings-board'>
         <SettingsBoard />
         </div>

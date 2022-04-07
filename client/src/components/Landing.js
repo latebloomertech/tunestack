@@ -19,13 +19,22 @@ function Landing({ user }) {
 
     return (
         <>
-            <div className='splash'>Landing
-                <h2>Welcome to TuneStack</h2>
-                <p>description of tunestack...</p>
-                <h2>Sign in to Spotify to get started:</h2>
-                <button>Sign in to Spotify</button>
+            <div className='splash'>
+                <h2 className='fade-in-text'> Welcome to TuneStack</h2>
+
+                <div className='welcome-paragraph'>
+                <p>Connect to your Spotify account and organize your saved songs <br></br>in dynamic new ways.</p>
+
+                <p>TuneStack will organize your saved songs into playlists based on <br></br> your preferences.</p>
+
+                <p>After sigining in to Spotify, you will choose how to group, filter, and <br></br>order the songs on your newly created playlists!</p>
+                </div>
+
+                <h2 className='sign-in-prompt'>Sign in to Spotify to get started:</h2>
+
+                <button className='buttons-general'>Sign in to Spotify</button>
             </div>
-            <div>
+            {/* <div>
                 <form onSubmit={handleSubmit}>
                     <label className="login-labels" htmlFor="username">Username:  </label>
                     <input className="input-form"
@@ -37,7 +46,7 @@ function Landing({ user }) {
 
                     <button className="button-test" type="submit">Temp Login</button>
                 </form>
-            </div>
+            </div> */}
         </>
     )
 }
