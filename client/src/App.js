@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./components/Header"
 import Landing from "./components/Landing"
 import Dashboard from "./components/Dashboard"
@@ -21,24 +21,14 @@ function App() {
     <BrowserRouter>
       <div className="App">
         <Header />
-        <Switch>
-          <Route exact path="/testing">
-            <h1>Test Route</h1>
-          </Route>
-          <Route exact path="/">
-            <Landing user={user}/>
-          </Route>
-          <Route exact path="/rules/grouping">
-            <GroupingRules />
-          </Route> <Route exact path="/rules/filtering">
-            <FilteringRules />
-          </Route> <Route exact path="/rules/songorder">
-            <SongOrderRules />
-          </Route>
-          <Route exact path="/dashboard">
-            <Dashboard />
-          </Route>
-        </Switch>
+        <Routes>
+          <Route exact path="/testing" element={<h1>Test Route</h1>}/>
+          <Route exact path="/"  element={<Landing user={user}/>}/>
+          <Route exact path="/rules/grouping" element={<GroupingRules />}/>
+          <Route exact path="/rules/filtering" element={<FilteringRules />}/>            
+          <Route exact path="/rules/songorder" element={<SongOrderRules />}/>
+          <Route exact path="/dashboard" element={<Dashboard />}/>
+        </Routes>
       </div>
     </BrowserRouter>
   );
