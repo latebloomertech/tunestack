@@ -1,25 +1,42 @@
 import { useState, useEffect } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
+import Header from "./components/Header"
+import Landing from "./components/Landing"
+import Dashboard from "./components/Dashboard"
+import GroupingRules from "./components/GroupingRules"
+import FilteringRules from "./components/FilteringRules"
+import SongOrderRules from "./components/SongOrderRules"
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [user, setUser] = useState(null)
 
   useEffect(() => {
-    fetch("/hello")
+    fetch("/me")
       .then((r) => r.json())
-      .then((data) => setCount(data.count));
+      .then((data) => setUser(data));
   }, []);
 
+
   return (
-   <BrowserRouter>
+    <BrowserRouter>
       <div className="App">
+        <Header />
         <Switch>
-         <Route path="/testing">
+          <Route exact path="/testing">
             <h1>Test Route</h1>
           </Route>
-          <Route path="/">
-            <h1>TuneStack</h1>
-            <h2>Page count: {count}</h2>
+          <Route exact path="/">
+            <Landing user={user}/>
+          </Route>
+          <Route exact path="/rules/grouping">
+            <GroupingRules />
+          </Route> <Route exact path="/rules/filtering">
+            <FilteringRules />
+          </Route> <Route exact path="/rules/songorder">
+            <SongOrderRules />
+          </Route>
+          <Route exact path="/dashboard">
+            <Dashboard />
           </Route>
         </Switch>
       </div>
