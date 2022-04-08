@@ -9,7 +9,7 @@ function Header() {
                 <h2>tuneStack</h2>
             </div>
             <div className='header-navbar'>
-            <NavBar />
+                <NavBar />
             </div>
         </div>
     )

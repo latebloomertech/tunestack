@@ -4,13 +4,12 @@ import { Link } from "react-router-dom"
 
 function FilteringRules() {
   return (
-    <div className='flow-card'>
-      <h2 className='flow-card-title'>What songs do you want to include in the playlists?</h2>
+    <div className='base-container-primary flow-container'>
+      <h2 className='flow-header'>What songs do you want to include in the playlists?</h2>
 
-      <div className='flow-card-choices-container'>
-        <p>Only include the following songs:</p>
-
-        <form className='flow-card-form'>
+      <form className='flow-form'>
+        <div>
+          <p>Only include the following songs:</p>
           <div className='radio'>
             <input
               type="radio"
@@ -34,29 +33,25 @@ function FilteringRules() {
               value="filterTwentyPlays" />
             <label> Greater than 20 plays </label>
           </div>
+          </div>
 
-          <div className='flow-buttons'>
-          <div className='flow-card-previous'>
-            <Link to={`/rules/grouping`}>
-              <button>
+          <div className='flow-nav-buttons'>
+            <Link to={`/rules/grouping`} className='flow-previous-link'>
+              <button className='button button-primary flow-previous-button'>
                 Previous
               </button>
             </Link>
-          </div>
 
-          <div className='flow-card-next'>
-            <Link to={`/rules/songorder`}>
+            <Link to={`/rules/songorder`} className='flow-next-link'>
               <input
                 // onSubmit={handleFilteringSubmit}
                 type="submit"
-                value="Next">
+                value="Next"
+                className='button button-primary flow-next-button'>
               </input>
             </Link>
           </div>
-          </div>
-
-        </form>
-      </div>
+      </form>
     </div>
   )
 }

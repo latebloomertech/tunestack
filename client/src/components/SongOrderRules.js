@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import { Link } from "react-router-dom"
 
 function SongOrderRules() {
@@ -7,70 +7,62 @@ function SongOrderRules() {
   }
 
   return (
-    <div className='flow-card'>
-    <h2 className='flow-card-title'>Almost done! How do you want to order the songs in your playlists?</h2>
-
-    <div className='flow-card-choices-container'>
-      <p>Order the songs by:</p>
-
+    <div className='base-container-primary flow-container'>
+      <h2 className='flow-header'>Almost done! How do you want to order the songs in your playlists?</h2>
       <form
-        className='flow-card-form'
+        className='flow-form'
         onSubmit={handleSongOrderSubmit}>
+        <div>
+          <p>Order the songs in each playlist by:</p>
+          <div className='radio'>
+            <input
+              type="radio"
+              name="songOrder"
+              value="songOrderName" />
+            <label> Name</label>
+          </div>
 
-        <div className='radio'>
-          <input
-            type="radio"
-            name="songOrder"
-            value="songOrderName" />
-          <label> Name</label>
+          <div className='radio'>
+            <input
+              type="radio"
+              name="songOrder"
+              value="songOrderDuration" />
+            <label> Duration</label>
+          </div>
+
+          <div className='radio'>
+            <input
+              type="radio"
+              name="songOrder"
+              value="songOrderDateSaved" />
+            <label> Date Saved </label>
+          </div>
+
+          <div className='radio'>
+            <input
+              type="radio"
+              name="songOrder"
+              value="songOrderPopularity" />
+            <label> Popularity </label>
+          </div>
         </div>
 
-        <div className='radio'>
-          <input
-            type="radio"
-            name="songOrder"
-            value="songOrderDuration" />
-          <label> Duration</label>
-        </div>
-
-        <div className='radio'>
-          <input
-            type="radio"
-            name="songOrder"
-            value="songOrderDateSaved" />
-          <label> Date Saved </label>
-        </div>
-
-        <div className='radio'>
-          <input
-            type="radio"
-            name="songOrder"
-            value="songOrderPopularity" />
-          <label> Popularity </label>
-        </div>
-
-        <div className='flow-buttons'>
-        <div className='flow-card-previous'>
-        <Link to={`/rules/filtering`}>
-            <button>
+        <div className='flow-nav-buttons'>
+          <Link to={`/rules/filtering`} className='flow-previous-link'>
+            <button className='button button-primary flow-previous-button'>
               Previous
             </button>
           </Link>
-        </div>
-
-        <div className='flow-card-next'>
-        <Link to={`/dashboard`}>
+          <Link to={`/dashboard`} className='flow-next-link'>
             <input
               type="submit"
-              value="See Results!">
+              value="See Results!"
+              className='button button-primary flow-next-button'>
             </input>
           </Link>
         </div>
-        </div>
-
       </form>
     </div>
-  </div>
   )
 }
 

@@ -1,3 +1,4 @@
+import './App.css';
 import { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./components/Header"
@@ -6,6 +7,7 @@ import Dashboard from "./components/Dashboard"
 import GroupingRules from "./components/GroupingRules"
 import FilteringRules from "./components/FilteringRules"
 import SongOrderRules from "./components/SongOrderRules"
+
 
 function App() {
   const [user, setUser] = useState(null)
