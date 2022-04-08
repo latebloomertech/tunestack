@@ -111,6 +111,7 @@ code {
   margin-bottom: 2em;
   background-color: var(--bg-color-secondary);
   box-shadow: var(--box-shadow-primary);
+  width: 50em;
 }
 
 .content-block-secondary {
