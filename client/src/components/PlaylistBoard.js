@@ -3,8 +3,11 @@ import PlaylistDetail from "./PlaylistDetail"
 
 function PlaylistBoard() {
   return (
-    <div>PlaylistBoard
-        <PlaylistDetail />
+    <div className='base-container-primary'>
+      <h2>Your TuneStack Playlists</h2>
+      <PlaylistDetail />
+      <PlaylistDetail />
+      <PlaylistDetail />
     </div>
   )
 }
