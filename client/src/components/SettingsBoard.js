@@ -4,7 +4,7 @@ import { Link } from "react-router-dom"
 
 function SettingsBoard() {
   return (
-    <div className='base-container-primary'>
+    <div className='content-block content-block-primary'>
       <h2>User Settings</h2>
       <Link to={`/rules/grouping`}>
         <button className='button'>

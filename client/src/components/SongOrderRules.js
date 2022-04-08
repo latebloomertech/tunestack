@@ -7,7 +7,7 @@ function SongOrderRules() {
   }
 
   return (
-    <div className='base-container-primary flow-container'>
+    <div className='content-block content-block-primary content-block-flow'>
       <h2 className='flow-header'>Almost done! How do you want to order the songs in your playlists?</h2>
       <form
         className='flow-form'

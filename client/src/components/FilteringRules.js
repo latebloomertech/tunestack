@@ -4,7 +4,7 @@ import { Link } from "react-router-dom"
 
 function FilteringRules() {
   return (
-    <div className='base-container-primary flow-container'>
+    <div className='content-block content-block-primary content-block-flow'>
       <h2 className='flow-header'>What songs do you want to include in the playlists?</h2>
 
       <form className='flow-form'>
