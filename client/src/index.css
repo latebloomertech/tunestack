@@ -3,16 +3,45 @@
 } */
 
 :root {
-  --brand-color-primary: #1ed761ff;
+  /* --brand-color-primary: #1ed761ff;
+  --brand-color-primary-dark: darkgreen;
+  --brand-color-primary-light: honeydew; */
+  --brand-color-primary: #1ed761;
   --brand-color-primary-dark: darkgreen;
   --brand-color-primary-light: honeydew;
+  /* --brand-color-secondary: blueviolet;
+  --brand-color-secondary-dark: indigo;
+  --brand-color-secondary-light: lavender; */
+  --brand-color-secondary: magenta;
+  --brand-color-secondary-dark: indigo;
+  --brand-color-secondary-light: lavender ;
+  /* --brand-color-tertiary: gold;
+  --brand-color-tertiary-dark: darkgoldenrod;
+  --brand-color-tertiary-light: oldlace; */
+  --brand-color-tertiary: gold;
+  --brand-color-tertiary-dark: darkgoldenrod;
+  --brand-color-tertiary-light: cornsilk;
+  /* --brand-color-alt: magenta;
+  --brand-color-alt-dark: darkmagenta;
+  --brand-color-alt-light: lavenderblush; */
+  --brand-color-alt: blueviolet;
+  --brand-color-alt-dark: darkgreen;
+  --brand-color-alt-light: honeydew;
+
   --brand-color-dark: black;
-  --brand-color-light: oldlace;
-  --button-bg-color-primary: var(--brand-color-primary);
+  --brand-color-light: cornsilk;
+  
   --bg-color-primary: var(--brand-color-light);
-  --bg-color-secondary: var(--brand-color-primary-light);
-  --box-shadow-primary: .5em .5em var(--brand-color-primary);
-  --box-shadow-secondary: .25em .25em var(--brand-color-primary-dark);
+  --bg-color-secondary: var(--brand-color-alt-light);
+  --bg-color-tertiary: var(--brand-color-secondary-light);
+
+  --button-bg-color-primary: var(--brand-color-secondary-light);
+  --button-bg-color-secondary: var(--brand-color-secondary-light);
+  --button-bg-color-tertiary: var(--brand-color-tertiary-light);
+
+  --box-shadow-primary: .5em .5em var(--brand-color-alt-dark);
+  --box-shadow-secondary: .25em .25em var(--brand-color-secondary-dark);
+  --box-shadow-tertiary: .25em .25em var(--brand-color-tertiary-dark);
   --border-radius-small: .5em;
   --border-primary: 1px solid black;
 }
@@ -60,21 +89,83 @@ code {
   font-size: large;
 }
 
-.base-container-primary {
+
+.content-block {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: stretch;
-  padding: 1em 2em 2em 2em;
-  margin-bottom: 2em;
   border: var(--border-primary);
   border-radius: 8px;
+}
+
+.content-block-primary {
+  padding: 1em 2em 2em 2em;
+  margin-bottom: 2em;
   background-color: var(--bg-color-secondary);
   box-shadow: var(--box-shadow-primary);
 }
 
-.flow-container {
+.content-block-secondary {
+  padding: 1em 1em 1em 1em;
+  margin-bottom: 1em;
+  background-color: var(--bg-color-tertiary);
+  box-shadow: var(--box-shadow-secondary);
+  flex-direction: column;
+}
+
+.content-block-playlist {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+.playlist-details {
+  display: flex;
+  flex-direction: row;
+}
+
+.track-detail-container {
+  margin-top: 1em;
+  display: grid;
+  grid-template-columns: auto 3fr 2fr auto;
   align-items: center;
+}
+
+.content-block-flow {
+  align-items: center;
+}
+
+.playlist-image {
+  width: 4em;
+  height: 4em;
+  border: var(--border-primary)
+}
+
+.track-image {
+  width: 2em;
+  height: 2em;
+  margin-right: 1em;
+  border: var(--border-primary);
+}
+
+.data-field {
+  margin-left: 2em;
+}
+
+.data-field-value {
+  margin-top: .5em;
+  font-size: large;
+  font-weight: bold;
+}
+
+.track-data-field {
+  font-size: large;
+  vertical-align: middle;
+}
+
+.data-field-label {
+  font-size: small;
 }
 
 .button {
@@ -87,10 +178,20 @@ code {
 }
 
 .button-primary {
-  background-color:var(--button-bg-color-primary);
+  background-color:var(--button-bg-color-secondary);
+  /* box-shadow: var(--box-shadow-primary); */
+  box-shadow: .25em .25em var(--brand-color-secondary-dark);
+}
+
+.button-secondary {
+  background-color:var(--button-bg-color-secondary);
   box-shadow: var(--box-shadow-secondary);
 }
 
+.button-tertiary {
+  background-color:var(--button-bg-color-tertiary);
+  box-shadow: var(--box-shadow-tertiary);
+}
 
 .flow-form {
   display: flex;
@@ -118,6 +219,7 @@ code {
   align-self: flex-end;
   align-items: flex-end;
 }
+
 
 
 .splash {

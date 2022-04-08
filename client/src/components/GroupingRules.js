@@ -4,7 +4,7 @@ import { Link } from "react-router-dom"
 
 function GroupingRules({ handleGroupingSubmit }) {
     return (
-        <div className='base-container-primary flow-container' >
+        <div className='content-block content-block-primary content-block-flow' >
             <h2 className='flow-header'>How do you want to group your new playlists?</h2>
 
             <form className='flow-form'>
