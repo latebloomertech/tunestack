@@ -12,7 +12,7 @@
   /* --brand-color-secondary: blueviolet;
   --brand-color-secondary-dark: indigo;
   --brand-color-secondary-light: lavender; */
-  --brand-color-secondary: magenta;
+  --brand-color-secondary: blueviolet;
   --brand-color-secondary-dark: indigo;
   --brand-color-secondary-light: lavender ;
   /* --brand-color-tertiary: gold;
@@ -24,24 +24,26 @@
   /* --brand-color-alt: magenta;
   --brand-color-alt-dark: darkmagenta;
   --brand-color-alt-light: lavenderblush; */
-  --brand-color-alt: blueviolet;
-  --brand-color-alt-dark: darkgreen;
-  --brand-color-alt-light: honeydew;
+  --brand-color-alt: magenta;
+  --brand-color-alt-dark: darkmagenta;
+  --brand-color-alt-light: lavenderblush;
 
   --brand-color-dark: black;
   --brand-color-light: cornsilk;
   
-  --bg-color-primary: var(--brand-color-light);
-  --bg-color-secondary: var(--brand-color-alt-light);
+  --bg-color-primary: var(--brand-color-tertiary-light);
+  --bg-color-secondary: var(--brand-color-primary-light);
   --bg-color-tertiary: var(--brand-color-secondary-light);
+  --bg-color-alt: var(--brand-color-alt-light);
 
   --button-bg-color-primary: var(--brand-color-secondary-light);
   --button-bg-color-secondary: var(--brand-color-secondary-light);
   --button-bg-color-tertiary: var(--brand-color-tertiary-light);
 
-  --box-shadow-primary: .5em .5em var(--brand-color-alt-dark);
+  --box-shadow-primary: .5em .5em var(--brand-color-primary-dark);
   --box-shadow-secondary: .25em .25em var(--brand-color-secondary-dark);
   --box-shadow-tertiary: .25em .25em var(--brand-color-tertiary-dark);
+  --box-shadow-alt: .25em .25em var(--brand-color-alt-dark);
   --border-radius-small: .5em;
   --border-primary: 1px solid black;
 }
@@ -112,6 +114,15 @@ code {
   background-color: var(--bg-color-tertiary);
   box-shadow: var(--box-shadow-secondary);
   flex-direction: column;
+}
+
+.content-block-tertiary {
+  padding: 0em 1em 1.5em 1em;
+  margin-bottom: 1em;
+  background-color: var(--brand-color-alt-light);
+  box-shadow: var(--box-shadow-alt);
+  flex-direction: column;
+  /* width: 100%; */
 }
 
 .content-block-playlist {
