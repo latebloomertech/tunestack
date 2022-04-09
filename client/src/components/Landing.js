@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 
 function Landing({ user }) {
-    const [hashParamsReturned, setHashParamsReturned] = useState([])
+    const [spotifyUser, setSpotifyUser] = useState([])
+    const [accessToken, setAccessToken] = useState("")
 
     function getHashParams() {
         var hashParams = {};
@@ -17,26 +18,44 @@ function Landing({ user }) {
     }
 
     const params = getHashParams()
+
     console.log(params.refresh_token)
 
     const data = { username: 'example' };
 
-    fetch('https://api.spotify.com/v1/me', {
-        method: 'GET',
-        // mode: 'no-cors',
-        headers: {
-            'Accept': "application/json",
-            'Content-Type': 'application/json',
-            'Authorization' : 'Bearer BQA_MrPn2PfJ2fZYTOsYg0ugmPNcYe1O6lLVUxThVa7vmkPvqarmIp3VciVf7lmcRJo_8c9Bgx271w5_E-kXo42k6wi6V0TCSV838UsUb-1SIVJoLoU_JHuhZdWRN_Gy2bBIRnPs0d0KXpdN-ow3UpJ6jvbGvkjLaCT78Wjf6BfqT06ehPsUzw'
-        },
-    })
-        .then(response => response.json())
-        .then(data => {
-            console.log('Success:', data);
-        })
-        .catch((error) => {
-            console.error('Error:', error);
-        });
+    //     fetch('https://api.spotify.com/v1/me', {
+    //     method: 'GET',
+    //     headers: {
+    //         'Accept': "application/json",
+    //         'Content-Type': 'application/json',
+    //         'Authorization' : `Bearer ${params.access_token}`
+    //     },
+    // })
+    //     .then(response => response.json())
+    //     .then(data => {
+    //         console.log(data);
+    //     })
+    //     .catch((error) => {
+    //         console.error('Error:', error);
+    //     });
+
+    useEffect(() => {
+        async function fetchMyAPI() {
+            let response = await fetch('https://api.spotify.com/v1/me', {
+                method: 'GET',
+                // mode: 'no-cors',
+                headers: {
+                    'Accept': "application/json",
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${params.access_token}`
+                },
+            })
+            response = await response.json()
+            setSpotifyUser(response)
+        }
+
+        fetchMyAPI()
+    }, [])
 
 
     return (
@@ -58,7 +77,10 @@ function Landing({ user }) {
                     <button className='buttons-general'>Sign in with Spotify</button>
                 </a>
             </div>
-        </>
+            <div>
+                <h2>Hello{spotifyUser.display_name}</h2>
+            </div>
+            </>
     )
 }
 
