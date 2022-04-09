@@ -1,14 +1,57 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from "react-router-dom"
+import SelectOption from './SelectOption'
+
+const options = [
+    {
+        value: 'year',
+        label: 'The year I saved the song'
+    }, {
+        value: 'quarter',
+        label: 'The quarter I saved the song'
+    }, {
+        value: 'month',
+        label: 'The month I saved the song'
+    }, {
+        value: 'energy',
+        label: 'The energy level of the song'
+    }, {
+        value: 'instrumentalness',
+        label: 'The instrumentalness of the song'
+    }, {
+        value: 'popularity',
+        label: 'The popularity of the song'
+    },
+
+]
 
 
 function GroupingRules({ handleGroupingSubmit }) {
+
+    const [selectedOption, setSelectedOption] = useState(null)
+
+    function handleSelect(value) {
+        setSelectedOption(value)
+    }
     return (
         <div className='content-block content-block-primary content-block-flow' >
             <h2 className='flow-header'>How do you want to group your new playlists?</h2>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '1em', marginBottom: '1em' }}>
+                {options.map(({ value, label }) => {
+                    return <SelectOption
+                        key={value}
+                        selectedOption={selectedOption}
+                        handleSelect={handleSelect}
+                        value={value}
+                        label={label}>
+                    </SelectOption>
+                })}
+            </div>
+
+            {/* <h2>{selectedOption}</h2> */}
 
             <form className='flow-form'>
-                <div>
+                {/* <div>
                     <p>Group my songs into playlists according to:</p>
                     <div className='radio'>
                         <input
@@ -57,7 +100,7 @@ function GroupingRules({ handleGroupingSubmit }) {
                             value="GroupPopularity" />
                         <label>The popularity of the song</label>
                     </div>
-                </div>
+                </div> */}
 
                 <Link to={`/rules/filtering`} className="flow-next-link" >
                     <input

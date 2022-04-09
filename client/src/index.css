@@ -27,6 +27,9 @@
   --brand-color-alt: magenta;
   --brand-color-alt-dark: darkmagenta;
   --brand-color-alt-light: lavenderblush;
+  --brand-color-blue: blue;
+  --brand-color-blue-light: aliceblue;
+  --brand-color-blue-dark: darkblue;
 
   --brand-color-dark: black;
   --brand-color-light: cornsilk;
@@ -35,6 +38,7 @@
   --bg-color-secondary: var(--brand-color-primary-light);
   --bg-color-tertiary: var(--brand-color-secondary-light);
   --bg-color-alt: var(--brand-color-alt-light);
+  --bg-color-blue: var(--brand-color-blue-light);
 
   --button-bg-color-primary: var(--brand-color-secondary-light);
   --button-bg-color-secondary: var(--brand-color-secondary-light);
@@ -44,6 +48,7 @@
   --box-shadow-secondary: .25em .25em var(--brand-color-secondary-dark);
   --box-shadow-tertiary: .25em .25em var(--brand-color-tertiary-dark);
   --box-shadow-alt: .25em .25em var(--brand-color-alt-dark);
+  --box-shadow-blue: .25em .25em var(--brand-color-blue-dark);
   --border-radius-small: .5em;
   --border-primary: 1px solid black;
 }
@@ -106,6 +111,7 @@ code {
   margin-bottom: 2em;
   background-color: var(--bg-color-secondary);
   box-shadow: var(--box-shadow-primary);
+  width: 50em;
 }
 
 .content-block-secondary {
@@ -129,6 +135,15 @@ code {
   display: flex;
   justify-content: space-between;
   flex-direction: row;
+}
+.content-block-select-option {
+  display: block;
+  cursor: pointer;
+}
+
+.content-block-select-option-selected {
+  background-color: var(--bg-color-blue);
+  box-shadow: var(--box-shadow-blue);
 }
 
 .playlist-details {
@@ -158,6 +173,11 @@ code {
   height: 2em;
   margin-right: 1em;
   border: var(--border-primary);
+}
+
+.select-option-image {
+  width: 2em;
+  height: 2em;
 }
 
 .data-field {
