@@ -10,13 +10,15 @@ import SongOrderRules from "./components/SongOrderRules"
 
 
 function App() {
-  const [user, setUser] = useState(null)
+ 
+        //ADD BACK THE FOLLOWING CODE FOR USER LOGIN AUTHENTICATION Rails server
+  // const [user, setUser] = useState(null)
 
-  useEffect(() => {
-    fetch("/me")
-      .then((r) => r.json())
-      .then((data) => setUser(data));
-  }, []);
+  // useEffect(() => {
+  //   fetch("/me")
+  //     .then((r) => r.json())
+  //     .then((data) => setUser(data));
+  // }, []);
 
   function handleGroupingSubmit(e) {
     console.log(e)
@@ -28,7 +30,8 @@ function App() {
         <Header />
         <Routes>
           <Route exact path="/testing" element={<h1>Test Route</h1>}/>
-          <Route exact path="/"  element={<Landing user={user}/>}/>
+          {/* for user login - add back to Landing  - user={user} */}
+          <Route exact path="/"  element={<Landing />}/>
           <Route exact path="/rules/grouping" element={<GroupingRules handleGroupingSubmit={handleGroupingSubmit}/>}/>
           <Route exact path="/rules/filtering" element={<FilteringRules />}/>
           <Route exact path="/rules/songorder" element={<SongOrderRules />}/>
