@@ -26,7 +26,7 @@ function PlaylistDetail() {
             <div className='data-field-value'>34</div>
           </div>
         </div>
-        <button className='button button-tertiary' onClick={handleClick}>{showTracks ? 'Hide Tracks' : 'View Tracks'}</button>
+        <button className='button button-primary' onClick={handleClick}>{showTracks ? 'Hide Tracks' : 'View Tracks'}</button>
       </div>
 
       {showTracks ? (<div>

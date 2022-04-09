@@ -23,7 +23,7 @@ function SettingsBoard() {
       </div>
 
       <Link to={`/rules/grouping`}>
-        <button className='button button-secondary'>
+        <button className='button button-primary'>
           Edit Sort Settings
         </button>
       </Link>
