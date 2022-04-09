@@ -3,30 +3,30 @@
 } */
 
 :root {
-  /* --brand-color-primary: #1ed761ff;
-  --brand-color-primary-dark: darkgreen;
-  --brand-color-primary-light: honeydew; */
-  --brand-color-primary: #1ed761;
-  --brand-color-primary-dark: darkgreen;
-  --brand-color-primary-light: honeydew;
-  /* --brand-color-secondary: blueviolet;
-  --brand-color-secondary-dark: indigo;
-  --brand-color-secondary-light: lavender; */
-  --brand-color-secondary: blueviolet;
-  --brand-color-secondary-dark: indigo;
-  --brand-color-secondary-light: lavender ;
-  /* --brand-color-tertiary: gold;
-  --brand-color-tertiary-dark: darkgoldenrod;
-  --brand-color-tertiary-light: oldlace; */
-  --brand-color-tertiary: gold;
-  --brand-color-tertiary-dark: darkgoldenrod;
-  --brand-color-tertiary-light: cornsilk;
-  /* --brand-color-alt: magenta;
-  --brand-color-alt-dark: darkmagenta;
-  --brand-color-alt-light: lavenderblush; */
-  --brand-color-alt: magenta;
-  --brand-color-alt-dark: darkmagenta;
-  --brand-color-alt-light: lavenderblush;
+  /* --brand-color-green: #1ed761ff;
+  --brand-color-green-dark: darkgreen;
+  --brand-color-green-light: honeydew; */
+  --brand-color-green: #1ed761;
+  --brand-color-green-dark: darkgreen;
+  --brand-color-green-light: honeydew;
+  /* --brand-color-purple: blueviolet;
+  --brand-color-purple-dark: indigo;
+  --brand-color-purple-light: lavender; */
+  --brand-color-purple: blueviolet;
+  --brand-color-purple-dark: indigo;
+  --brand-color-purple-light: lavender ;
+  /* --brand-color-yellow: gold;
+  --brand-color-yellow-dark: darkgoldenrod;
+  --brand-color-yellow-light: oldlace; */
+  --brand-color-yellow: gold;
+  --brand-color-yellow-dark: darkgoldenrod;
+  --brand-color-yellow-light: cornsilk;
+  /* --brand-color-pink: magenta;
+  --brand-color-pink-dark: darkmagenta;
+  --brand-color-pink-light: lavenderblush; */
+  --brand-color-pink: magenta;
+  --brand-color-pink-dark: darkmagenta;
+  --brand-color-pink-light: lavenderblush;
   --brand-color-blue: blue;
   --brand-color-blue-light: aliceblue;
   --brand-color-blue-dark: darkblue;
@@ -34,21 +34,24 @@
   --brand-color-dark: black;
   --brand-color-light: cornsilk;
   
-  --bg-color-primary: var(--brand-color-tertiary-light);
-  --bg-color-secondary: var(--brand-color-primary-light);
-  --bg-color-tertiary: var(--brand-color-secondary-light);
-  --bg-color-alt: var(--brand-color-alt-light);
+  --bg-color-yellow: var(--brand-color-yellow-light);
+  --bg-color-green: var(--brand-color-green-light);
+  --bg-color-purple: var(--brand-color-purple-light);
+  --bg-color-pink: var(--brand-color-pink-light);
   --bg-color-blue: var(--brand-color-blue-light);
 
-  --button-bg-color-primary: var(--brand-color-secondary-light);
-  --button-bg-color-secondary: var(--brand-color-secondary-light);
-  --button-bg-color-tertiary: var(--brand-color-tertiary-light);
+  --button-bg-color-green: var(--brand-color-green-light);
+  --button-bg-color-purple: var(--brand-color-purple-light);
+  --button-bg-color-yellow: var(--brand-color-yellow-light);  
+  --button-bg-color-pink: var(--brand-color-pink-light);
+  --button-bg-color-blue: var(--brand-color-blue-light);
 
-  --box-shadow-primary: .5em .5em var(--brand-color-primary-dark);
-  --box-shadow-secondary: .25em .25em var(--brand-color-secondary-dark);
-  --box-shadow-tertiary: .25em .25em var(--brand-color-tertiary-dark);
-  --box-shadow-alt: .25em .25em var(--brand-color-alt-dark);
+  --box-shadow-green: .5em .5em var(--brand-color-green-dark);
+  --box-shadow-purple: .25em .25em var(--brand-color-purple-dark);
+  --box-shadow-yellow: .25em .25em var(--brand-color-yellow-dark);
+  --box-shadow-pink: .25em .25em var(--brand-color-pink-dark);
   --box-shadow-blue: .25em .25em var(--brand-color-blue-dark);
+  
   --border-radius-small: .5em;
   --border-primary: 1px solid black;
 }
@@ -63,7 +66,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   width: 100vw;
   height: 100vh;
-  background-color: var(--bg-color-primary);
+  background-color: var(--bg-color-yellow);
 }
 
 code {
@@ -109,24 +112,24 @@ code {
 .content-block-primary {
   padding: 1em 2em 2em 2em;
   margin-bottom: 2em;
-  background-color: var(--bg-color-secondary);
-  box-shadow: var(--box-shadow-primary);
+  background-color: var(--bg-color-green);
+  box-shadow: var(--box-shadow-green);
   width: 50em;
 }
 
 .content-block-secondary {
   padding: 1em 1em 1em 1em;
   margin-bottom: 1em;
-  background-color: var(--bg-color-tertiary);
-  box-shadow: var(--box-shadow-secondary);
+  background-color: var(--bg-color-purple);
+  box-shadow: var(--box-shadow-purple);
   flex-direction: column;
 }
 
-.content-block-tertiary {
+.content-block-tertiary { 
   padding: 0em 1em 1.5em 1em;
   margin-bottom: 1em;
-  background-color: var(--brand-color-alt-light);
-  box-shadow: var(--box-shadow-alt);
+  background-color: var(--brand-color-pink-light);
+  box-shadow: var(--box-shadow-pink);
   flex-direction: column;
   /* width: 100%; */
 }
@@ -209,19 +212,18 @@ code {
 }
 
 .button-primary {
-  background-color:var(--button-bg-color-secondary);
-  /* box-shadow: var(--box-shadow-primary); */
-  box-shadow: .25em .25em var(--brand-color-secondary-dark);
+  background-color:var(--button-bg-color-yellow);
+  box-shadow: var(--box-shadow-yellow);
 }
 
 .button-secondary {
-  background-color:var(--button-bg-color-secondary);
-  box-shadow: var(--box-shadow-secondary);
+  background-color:var(--button-bg-color-blue);
+  box-shadow: var(--box-shadow-blue);
 }
 
 .button-tertiary {
-  background-color:var(--button-bg-color-tertiary);
-  box-shadow: var(--box-shadow-tertiary);
+  background-color:var(--button-bg-color-pink);
+  box-shadow: var(--box-shadow-pink);
 }
 
 .flow-form {
