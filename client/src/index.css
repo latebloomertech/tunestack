@@ -81,6 +81,10 @@ code {
 
 }
 
+.subtitle {
+  margin-bottom: 2em;
+}
+
 .header-navbar {
   display: flex;
   justify-content: flex-end;
@@ -127,11 +131,9 @@ code {
 
 .content-block-tertiary { 
   padding: 0em 1em 1.5em 1em;
-  margin-bottom: 1em;
   background-color: var(--brand-color-pink-light);
   box-shadow: var(--box-shadow-pink);
   flex-direction: column;
-  /* width: 100%; */
 }
 
 .content-block-playlist {
@@ -163,6 +165,7 @@ code {
 
 .content-block-flow {
   align-items: center;
+/* min-height: 50vh; */
 }
 
 .playlist-image {

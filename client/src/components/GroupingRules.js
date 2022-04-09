@@ -5,22 +5,28 @@ import SelectOption from './SelectOption'
 const options = [
     {
         value: 'year',
-        label: 'The year I saved the song'
+        label: 'The year I saved the song',
+        image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Simple_Music.svg/1200px-Simple_Music.svg.png?20110615130507'
     }, {
         value: 'quarter',
-        label: 'The quarter I saved the song'
+        label: 'The quarter I saved the song',
+        image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Simple_Music.svg/1200px-Simple_Music.svg.png?20110615130507'
     }, {
         value: 'month',
-        label: 'The month I saved the song'
+        label: 'The month I saved the song',
+        image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Simple_Music.svg/1200px-Simple_Music.svg.png?20110615130507'
     }, {
         value: 'energy',
-        label: 'The energy level of the song'
+        label: 'The energy level of the song',
+        image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Simple_Music.svg/1200px-Simple_Music.svg.png?20110615130507'
     }, {
         value: 'instrumentalness',
-        label: 'The instrumentalness of the song'
+        label: 'The instrumentalness of the song',
+        image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Simple_Music.svg/1200px-Simple_Music.svg.png?20110615130507'
     }, {
         value: 'popularity',
-        label: 'The popularity of the song'
+        label: 'The popularity of the song',
+        image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Simple_Music.svg/1200px-Simple_Music.svg.png?20110615130507'
     },
 
 ]
@@ -28,7 +34,7 @@ const options = [
 
 function GroupingRules({ handleGroupingSubmit }) {
 
-    const [selectedOption, setSelectedOption] = useState(null)
+    const [selectedOption, setSelectedOption] = useState(options[0].value)
 
     function handleSelect(value) {
         setSelectedOption(value)
@@ -36,14 +42,16 @@ function GroupingRules({ handleGroupingSubmit }) {
     return (
         <div className='content-block content-block-primary content-block-flow' >
             <h2 className='flow-header'>How do you want to group your new playlists?</h2>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '1em', marginBottom: '1em' }}>
-                {options.map(({ value, label }) => {
+            <div className='subtitle'>Select an option below to group the songs according to that attribute:</div>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '1em', marginBottom: '2em', width: '100%' }}>
+                {options.map(({ value, label, image }) => {
                     return <SelectOption
                         key={value}
-                        selectedOption={selectedOption}
+                        selected={selectedOption == value}
                         handleSelect={handleSelect}
                         value={value}
-                        label={label}>
+                        label={label}
+                        image={image}>
                     </SelectOption>
                 })}
             </div>
