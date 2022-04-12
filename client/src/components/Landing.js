@@ -1,8 +1,14 @@
 import React, { useEffect, useState } from 'react';
+import UserPlaylistDetail from './UserPlaylistDetail';
+import UserSavedTracksDetail from './UserSavedTracksDetail';
+import UserDetail from './UserDetail';
 
 function Landing({ user }) {
     const [spotifyUser, setSpotifyUser] = useState([])
     const [accessToken, setAccessToken] = useState("")
+    const [userPlaylists, setUserPlaylists] = useState([])
+    const [userSavedTracks, setUserSavedTracks] = useState([])
+
 
     function getHashParams() {
         var hashParams = {};
@@ -11,39 +17,18 @@ function Landing({ user }) {
         while (e = r.exec(q)) {
             hashParams[e[1]] = decodeURIComponent(e[2]);
         }
-        console.log(hashParams)
-        console.log(hashParams.access_token)
+        // console.log(hashParams.access_token)
 
         return hashParams;
     }
 
     const params = getHashParams()
-
-    console.log(params.refresh_token)
-
-    const data = { username: 'example' };
-
-    //     fetch('https://api.spotify.com/v1/me', {
-    //     method: 'GET',
-    //     headers: {
-    //         'Accept': "application/json",
-    //         'Content-Type': 'application/json',
-    //         'Authorization' : `Bearer ${params.access_token}`
-    //     },
-    // })
-    //     .then(response => response.json())
-    //     .then(data => {
-    //         console.log(data);
-    //     })
-    //     .catch((error) => {
-    //         console.error('Error:', error);
-    //     });
+    
 
     useEffect(() => {
         async function fetchMyAPI() {
             let response = await fetch('https://api.spotify.com/v1/me', {
                 method: 'GET',
-                // mode: 'no-cors',
                 headers: {
                     'Accept': "application/json",
                     'Content-Type': 'application/json',
@@ -51,14 +36,62 @@ function Landing({ user }) {
                 },
             })
             response = await response.json()
+            console.log(response)
             setSpotifyUser(response)
         }
 
         fetchMyAPI()
+
     }, [])
 
+    useEffect(() => {
+        async function fetchMyPlaylists() {
+            let response = await fetch('https://api.spotify.com/v1/me/playlists', {
+                method: 'GET',
+                headers: {
+                    'Accept': "application/json",
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${params.access_token}`
+                },
+            })
+            response = await response.json()
+            console.log(response)
+            setUserPlaylists(response)
+        }
+
+        fetchMyPlaylists()
+
+    }, [])
+
+    const playlists = userPlaylists.items
+    // console.log(playlists)
+    const userProfilePicture = spotifyUser.images
+    console.log(userProfilePicture)
+
+    useEffect(() => {
+        async function fetchMySavedTracks() {
+            let response = await fetch('https://api.spotify.com/v1/me/tracks?limit=50', {
+                method: 'GET',
+                headers: {
+                    'Accept': "application/json",
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${params.access_token}`
+                },
+            })
+            response = await response.json()
+            console.log(response)
+            setUserSavedTracks(response)
+        }
+
+        fetchMySavedTracks()
+
+    }, [])
+
+    const savedtracks = userSavedTracks.items
+    console.log(savedtracks)
 
     return (
+
         <>
             <div className='splash'>
                 <h2 className='fade-in-text'> Welcome to TuneStack</h2>
@@ -77,9 +110,23 @@ function Landing({ user }) {
                     <button className='buttons-general'>Sign in with Spotify</button>
                 </a>
             </div>
+
+            <>
             <div>
                 <h2>Hello{spotifyUser.display_name}</h2>
+
+                <ul>{playlists?.map(item =>
+                    <UserPlaylistDetail
+                    key={item.id}
+                    playlist={item}/>)}</ul>
             </div>
+            <div>
+            <ul>{savedtracks?.map(item =>
+                    <UserSavedTracksDetail
+                    key={item.track.id}
+                    savedtracks={item}/>)}</ul>
+            </div>
+            </>
             </>
     )
 }
