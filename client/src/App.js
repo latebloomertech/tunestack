@@ -12,37 +12,65 @@ import Logout from './components/Logout';
 
 function App() {
   const [accessToken, setAccessToken] = useState(null)
+  const [groupingSelection, setGroupingSelection] = useState()
+  const [songOrderSelection, setSongOrderSelection] = useState()
+  const [filterSelection, setFilterSelection] = useState([
+    {
+      value: 'danceability',
+      selected_options: ['high', 'medium', 'low']
+    }, {
+      value: 'tempo',
+      selected_options: ['high', 'medium', 'low']
+    }, {
+      value: 'energy',
+      selected_options: ['high', 'medium', 'low']
+    }, {
+      value: 'instrumentalness',
+      selected_options: ['high', 'medium', 'low']
+    }, {
+      value: 'popularity',
+      selected_options: ['high', 'medium', 'low']
+    },
+  ])
 
 
   useEffect(() => {
-  function getHashParams() {
-    var hashParams = {};
-    var e, r = /([^&;=]+)=?([^&;]*)/g,
+    function getHashParams() {
+      var hashParams = {};
+      var e, r = /([^&;=]+)=?([^&;]*)/g,
         q = window.location.hash.substring(1);
-    while (e = r.exec(q)) {
+      while (e = r.exec(q)) {
         hashParams[e[1]] = decodeURIComponent(e[2]);
+      }
+      console.log(hashParams.access_token)
+
+      setAccessToken(hashParams.access_token);
+
     }
-    console.log(hashParams.access_token)
+    getHashParams()
 
-   setAccessToken(hashParams.access_token);
-
-}
-getHashParams()
-
-}, [setAccessToken])
+  }, [setAccessToken])
 
 
-        //ADD BACK THE FOLLOWING CODE FOR USER LOGIN AUTHENTICATION Rails server
-  // const [user, setUser] = useState(null)
 
-  // useEffect(() => {
-  //   fetch("/me")
-  //     .then((r) => r.json())
-  //     .then((data) => setUser(data));
-  // }, []);
+  function handleGroupingSelect(value) {
+    console.log(value)
+    setGroupingSelection(value)
+  }
 
-  function handleGroupingSubmit(e) {
-    console.log(e)
+  function handleSongOrderSelect(value) {
+    console.log(value)
+    setSongOrderSelection(value)
+
+  }
+
+  function handleFilterSelect(value, newSelectedOptions) {
+    console.log(value, newSelectedOptions)
+    let newFilterSelection = [].concat(filterSelection)
+    const indexOfFilterSet = newFilterSelection.findIndex(filterSet => filterSet.value == value)
+    newFilterSelection[indexOfFilterSet].selected_options = newSelectedOptions
+    console.log(value, newFilterSelection)
+    setFilterSelection(newFilterSelection)
   }
 
   function handleLogout() {
@@ -52,16 +80,16 @@ getHashParams()
   return (
     <BrowserRouter>
       <div className="App">
-        <Header handleLogout={handleLogout}/>
+        <Header handleLogout={handleLogout} />
         <Routes>
-          <Route exact path="/testing" element={<h1>Test Route</h1>}/>
+          <Route exact path="/testing" element={<h1>Test Route</h1>} />
           {/* for user login - add back to Landing  - user={user} */}
-          <Route exact path="/"  element={<Landing accessToken={accessToken} />}/>
-          <Route exact path="/rules/grouping" element={<GroupingRules handleGroupingSubmit={handleGroupingSubmit}/>}/>
-          <Route exact path="/rules/filtering" element={<FilteringRules />}/>
-          <Route exact path="/rules/songorder" element={<SongOrderRules />}/>
-          <Route exact path="/dashboard" element={<Dashboard accessToken={accessToken}/>}/>
-          <Route exact path="/logout" element={<Logout setAccessToken={setAccessToken}/>}/>
+          <Route exact path="/" element={<Landing accessToken={accessToken} />} />
+          <Route exact path="/rules/grouping" element={<GroupingRules handleGroupingSelect={handleGroupingSelect} groupingSelection={groupingSelection}/>} />
+          <Route exact path="/rules/filtering" element={<FilteringRules handleFilterSelect={handleFilterSelect} />} />
+          <Route exact path="/rules/songorder" element={<SongOrderRules handleSongOrderSelect={handleSongOrderSelect} songOrderSelection={songOrderSelection}/>} />
+          <Route exact path="/dashboard" element={<Dashboard accessToken={accessToken} groupingSelection={groupingSelection} songOrderSelection={songOrderSelection} filterSelection={filterSelection}/>} />
+          <Route exact path="/logout" element={<Logout setAccessToken={setAccessToken} />} />
         </Routes>
       </div>
     </BrowserRouter>
@@ -69,3 +97,12 @@ getHashParams()
 }
 
 export default App;
+
+ //ADD BACK THE FOLLOWING CODE FOR USER LOGIN AUTHENTICATION Rails server
+  // const [user, setUser] = useState(null)
+
+  // useEffect(() => {
+  //   fetch("/me")
+  //     .then((r) => r.json())
+  //     .then((data) => setUser(data));
+  // }, []);

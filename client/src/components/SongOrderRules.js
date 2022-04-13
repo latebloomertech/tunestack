@@ -23,15 +23,14 @@ const options = [
 
 ]
 
-function SongOrderRules() {
+function SongOrderRules({handleSongOrderSelect, songOrderSelection}) {
 
-  function handleSongOrderSubmit() {
-  }
+  const [selectedOption, setSelectedOption] = useState(songOrderSelection ? songOrderSelection : options[0].value)
 
-  const [selectedOption, setSelectedOption] = useState(options[0].value)
-
+  
   function handleSelect(value) {
       setSelectedOption(value)
+      handleSongOrderSelect(value)
   }
 
   return (
@@ -52,7 +51,7 @@ function SongOrderRules() {
             </div>
       <form
         className='flow-form'
-        onSubmit={handleSongOrderSubmit}>
+        >
         {/* <div>
           <p>Order the songs in each playlist by:</p>
           <div className='radio'>

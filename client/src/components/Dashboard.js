@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react'
 import SettingsBoard from "./SettingsBoard"
 import PlaylistBoard from "./PlaylistBoard"
 
-function Dashboard({accessToken}) {
+function Dashboard({accessToken, groupingSelection, songOrderSelection, filterSelection}) {
   const [userSavedTracks, setUserSavedTracks] = useState([])
 
 
@@ -28,7 +28,7 @@ function Dashboard({accessToken}) {
 
   return (
     <div>
-        <SettingsBoard />
+        <SettingsBoard groupingSelection={groupingSelection} songOrderSelection={songOrderSelection} filterSelection={filterSelection}/>
         <PlaylistBoard />
     </div>
   )
