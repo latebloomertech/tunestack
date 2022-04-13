@@ -2,28 +2,16 @@ import React, { useEffect, useState } from 'react';
 import UserPlaylistDetail from './UserPlaylistDetail';
 import UserSavedTracksDetail from './UserSavedTracksDetail';
 import UserDetail from './UserDetail';
+import { Link } from "react-router-dom"
+import TopArtistCardContainer from './TopArtistCardContainer';
 
-function Landing({ user }) {
+
+function Landing({ user, accessToken, isLoggedIn }) {
     const [spotifyUser, setSpotifyUser] = useState([])
-    const [accessToken, setAccessToken] = useState("")
     const [userPlaylists, setUserPlaylists] = useState([])
     const [userSavedTracks, setUserSavedTracks] = useState([])
+    const [userTopArtists, setUserTopArtists] = useState([])    // console.log(accessToken)
 
-
-    function getHashParams() {
-        var hashParams = {};
-        var e, r = /([^&;=]+)=?([^&;]*)/g,
-            q = window.location.hash.substring(1);
-        while (e = r.exec(q)) {
-            hashParams[e[1]] = decodeURIComponent(e[2]);
-        }
-        // console.log(hashParams.access_token)
-
-        return hashParams;
-    }
-
-    const params = getHashParams()
-    
 
     useEffect(() => {
         async function fetchMyAPI() {
@@ -32,17 +20,17 @@ function Landing({ user }) {
                 headers: {
                     'Accept': "application/json",
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${params.access_token}`
+                    'Authorization': `Bearer ${accessToken}`
                 },
             })
             response = await response.json()
-            console.log(response)
+            // console.log(response)
             setSpotifyUser(response)
         }
 
         fetchMyAPI()
 
-    }, [])
+    }, [accessToken, setSpotifyUser])
 
     useEffect(() => {
         async function fetchMyPlaylists() {
@@ -51,17 +39,17 @@ function Landing({ user }) {
                 headers: {
                     'Accept': "application/json",
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${params.access_token}`
+                    'Authorization': `Bearer ${accessToken}`
                 },
             })
             response = await response.json()
-            console.log(response)
+            // console.log(response)
             setUserPlaylists(response)
         }
 
         fetchMyPlaylists()
 
-    }, [])
+    }, [accessToken, setUserPlaylists])
 
     const playlists = userPlaylists.items
     // console.log(playlists)
@@ -75,59 +63,87 @@ function Landing({ user }) {
                 headers: {
                     'Accept': "application/json",
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${params.access_token}`
+                    'Authorization': `Bearer ${accessToken}`
                 },
             })
             response = await response.json()
-            console.log(response)
-            setUserSavedTracks(response)
+            console.log(response.items)
+            setUserSavedTracks(response.items)
         }
 
         fetchMySavedTracks()
 
-    }, [])
+    }, [accessToken, setUserSavedTracks])
 
-    const savedtracks = userSavedTracks.items
-    console.log(savedtracks)
 
+    useEffect(() => {
+        async function fetchMyTopArtists() {
+            let response = await fetch('https://api.spotify.com/v1/me/top/artists?limit=12', {
+                method: 'GET',
+                headers: {
+                    'Accept': "application/json",
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${accessToken}`
+                },
+            })
+            response = await response.json()
+            console.log(response)
+            setUserTopArtists(response)
+        }
+
+        fetchMyTopArtists()
+
+    }, [accessToken, setUserTopArtists])
+    // const savedtracks = userSavedTracks.items
+    // console.log(savedtracks)
+
+    const topArtists = userTopArtists.items
+    console.log(topArtists)
     return (
 
         <>
-            <div className='splash'>
-                <h2 className='fade-in-text'> Welcome to TuneStack</h2>
-
-                <div className='welcome-paragraph'>
-                    <p>Connect to your Spotify account and organize your saved songs <br></br>in dynamic new ways.</p>
-
-                    <p>TuneStack will organize your saved songs into playlists based on <br></br> your preferences.</p>
-
-                    <p>After sigining in to Spotify, you will choose how to group, filter, and <br></br>order the songs on your newly created playlists!</p>
-                </div>
-
-                <h2 className='sign-in-prompt'>Sign in to Spotify to get started:</h2>
-
-                <a href="http://localhost:8888/">
-                    <button className='buttons-general'>Sign in with Spotify</button>
-                </a>
-            </div>
-
-            <>
-            <div>
-                <h2>Hello{spotifyUser.display_name}</h2>
-
-                <ul>{playlists?.map(item =>
+            {accessToken ? (
+                <div>
+                    <h2>Hello {spotifyUser.display_name}</h2>
+                    <h3>Your Top Artists:</h3>
+                    <TopArtistCardContainer topArtists={topArtists} />
+                    <h3>You have good taste!</h3>
+                    <h3>Ready to create new playlists from your saved songs?</h3>
+                    <Link to={`/rules/grouping`} className='flow-previous-link'>
+                        <button className='button button-primary flow-previous-button'>
+                            Let's get Started!
+                        </button>
+                    </Link>
+                    {/* <ul>{playlists?.map(item =>
                     <UserPlaylistDetail
                     key={item.id}
-                    playlist={item}/>)}</ul>
-            </div>
-            <div>
+                playlist={item}/>)}</ul> */}
+                    {/* <div>
             <ul>{savedtracks?.map(item =>
                     <UserSavedTracksDetail
                     key={item.track.id}
                     savedtracks={item}/>)}</ul>
-            </div>
-            </>
-            </>
+            </div> */}
+                </div>
+            ) : (
+                <div className='splash'>
+                    <h2 className='fade-in-text'> Welcome to TuneStack</h2>
+
+                    <div className='welcome-paragraph'>
+                        <p>Connect to your Spotify account and organize your saved songs <br></br>in dynamic new ways.</p>
+
+                        <p>TuneStack will organize your saved songs into playlists based on <br></br> your preferences.</p>
+
+                        <p>After sigining in to Spotify, you will choose how to group, filter, and <br></br>order the songs on your newly created playlists!</p>
+                    </div>
+
+                    <h2 className='sign-in-prompt'>Sign in to Spotify to get started:</h2>
+
+                    <a href="http://localhost:8888/">
+                        <button className='buttons-general'>Sign in with Spotify</button>
+                    </a>
+                </div>)}
+        </>
     )
 }
 
