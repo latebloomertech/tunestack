@@ -39,6 +39,7 @@ function GroupingRules({ handleGroupingSubmit }) {
     function handleSelect(value) {
         setSelectedOption(value)
     }
+
     return (
         <div className='content-block content-block-primary content-block-flow' >
             <h2 className='flow-header'>How do you want to group your new playlists?</h2>

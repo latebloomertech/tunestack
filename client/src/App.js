@@ -7,6 +7,7 @@ import Dashboard from "./components/Dashboard"
 import GroupingRules from "./components/GroupingRules"
 import FilteringRules from "./components/FilteringRules"
 import SongOrderRules from "./components/SongOrderRules"
+import Logout from './components/Logout';
 
 
 function App() {
@@ -44,10 +45,14 @@ getHashParams()
     console.log(e)
   }
 
+  function handleLogout() {
+    setAccessToken(null)
+  }
+
   return (
     <BrowserRouter>
       <div className="App">
-        <Header />
+        <Header handleLogout={handleLogout}/>
         <Routes>
           <Route exact path="/testing" element={<h1>Test Route</h1>}/>
           {/* for user login - add back to Landing  - user={user} */}
@@ -55,7 +60,8 @@ getHashParams()
           <Route exact path="/rules/grouping" element={<GroupingRules handleGroupingSubmit={handleGroupingSubmit}/>}/>
           <Route exact path="/rules/filtering" element={<FilteringRules />}/>
           <Route exact path="/rules/songorder" element={<SongOrderRules />}/>
-          <Route exact path="/dashboard" element={<Dashboard />}/>
+          <Route exact path="/dashboard" element={<Dashboard accessToken={accessToken}/>}/>
+          <Route exact path="/logout" element={<Logout setAccessToken={setAccessToken}/>}/>
         </Routes>
       </div>
     </BrowserRouter>

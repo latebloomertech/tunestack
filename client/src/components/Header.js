@@ -2,14 +2,14 @@ import React from 'react'
 import NavBar from "./NavBar"
 
 
-function Header() {
+function Header({handleLogout}) {
     return (
         <div className="header">
             <div className='header-logo'>
                 <h2>tuneStack</h2>
             </div>
             <div className='header-navbar'>
-                <NavBar />
+                <NavBar handleLogout={handleLogout}/>
             </div>
         </div>
     )

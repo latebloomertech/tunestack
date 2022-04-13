@@ -1,7 +1,9 @@
 import React from 'react'
 import { NavLink } from "react-router-dom"
+import { Link } from "react-router-dom"
 
-function NavBar() {
+
+function NavBar({handleLogout}) {
     return (
         <div>
             <nav className='navbar'>
@@ -11,7 +13,9 @@ function NavBar() {
                 <NavLink className="navlink" to="/rules/filtering">Filtering</NavLink>
                 <NavLink className="navlink" to="/rules/songorder">Song Order</NavLink>
             </nav>
-            <button className='button button-secondary'>Logout</button>
+            <Link to={`/logout`}>
+            <button onClick={handleLogout} className='button button-secondary'>Logout</button>
+            </Link>
         </div>
     )
 }
