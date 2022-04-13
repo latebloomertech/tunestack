@@ -33,7 +33,7 @@
 
   --brand-color-dark: black;
   --brand-color-light: cornsilk;
-  
+
   --bg-color-yellow: var(--brand-color-yellow-light);
   --bg-color-green: var(--brand-color-green-light);
   --bg-color-purple: var(--brand-color-purple-light);
@@ -42,7 +42,7 @@
 
   --button-bg-color-green: var(--brand-color-green-light);
   --button-bg-color-purple: var(--brand-color-purple-light);
-  --button-bg-color-yellow: var(--brand-color-yellow-light);  
+  --button-bg-color-yellow: var(--brand-color-yellow-light);
   --button-bg-color-pink: var(--brand-color-pink-light);
   --button-bg-color-blue: var(--brand-color-blue-light);
 
@@ -51,7 +51,7 @@
   --box-shadow-yellow: .25em .25em var(--brand-color-yellow-dark);
   --box-shadow-pink: .25em .25em var(--brand-color-pink-dark);
   --box-shadow-blue: .25em .25em var(--brand-color-blue-dark);
-  
+
   --border-radius-small: .5em;
   --border-primary: 1px solid black;
 }
@@ -129,7 +129,7 @@ code {
   flex-direction: column;
 }
 
-.content-block-tertiary { 
+.content-block-tertiary {
   padding: 0em 1em 1.5em 1em;
   background-color: var(--brand-color-pink-light);
   box-shadow: var(--box-shadow-pink);
@@ -393,4 +393,28 @@ code {
   margin: 1.5em;
 
 }
+.card-container {
+  /* background-color: #ededed; */
+  /* width: 100%; */
+  width: 60%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
 
+.card {
+  text-align: center;
+  /* border: grey solid 1px; */
+  padding: 2rem;
+  width: 5rem;
+  height: 8rem;
+  /* margin: 1rem 2rem; */
+  /* box-shadow: 3px 4px #1d3b0e; */
+  /* background-color: #c9c9c9; */
+  overflow: hidden;
+}
+
+.artist-image {
+  width: 80px;
+  height: 80px;
+}
