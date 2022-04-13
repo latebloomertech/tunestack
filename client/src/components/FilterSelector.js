@@ -1,18 +1,20 @@
 import React, { useState } from 'react'
 import SelectOption from './SelectOption'
 
-function FilterSelector({ value, label, image, options }) {
+function FilterSelector({ value, label, image, options, handleFilterSelect}) {
     const [selectedOptions, setSelectedOptions] = useState(options.map(option => option.value))
 
-    function handleSelect(value) {
+    function handleSelect(selectedValue) {
         let newSelectedOptions = [].concat(selectedOptions)
-        if (selectedOptions.includes(value)) {
-            newSelectedOptions.splice(selectedOptions.indexOf(value), 1)
+        if (selectedOptions.includes(selectedValue)) {
+            newSelectedOptions.splice(selectedOptions.indexOf(selectedValue), 1)
         } else {
-            newSelectedOptions.push(value)
+            newSelectedOptions.push(selectedValue)
         }
         setSelectedOptions(newSelectedOptions)
+        handleFilterSelect(value, newSelectedOptions)
     }
+
     return (
         <div >
             <h4>{label}</h4>

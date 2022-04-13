@@ -32,12 +32,15 @@ const options = [
 ]
 
 
-function GroupingRules({ handleGroupingSubmit }) {
+function GroupingRules({ handleGroupingSelect, groupingSelection}) {
 
-    const [selectedOption, setSelectedOption] = useState(options[0].value)
+    const [selectedOption, setSelectedOption] = useState(groupingSelection ? groupingSelection : options[0].value)
+
+    // (options[0].value)
 
     function handleSelect(value) {
         setSelectedOption(value)
+        handleGroupingSelect(value)
     }
 
     return (
@@ -113,7 +116,6 @@ function GroupingRules({ handleGroupingSubmit }) {
 
                 <Link to={`/rules/filtering`} className="flow-next-link" >
                     <input
-                        onSubmit={handleGroupingSubmit}
                         type="submit"
                         value="Next"
                         className='button button-primary flow-next-button'>
