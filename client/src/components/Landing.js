@@ -9,7 +9,7 @@ import TopArtistCardContainer from './TopArtistCardContainer';
 function Landing({ user, accessToken, isLoggedIn }) {
     const [spotifyUser, setSpotifyUser] = useState([])
     const [userPlaylists, setUserPlaylists] = useState([])
-    const [userSavedTracks, setUserSavedTracks] = useState([])
+    // const [userSavedTracks, setUserSavedTracks] = useState([])
     const [userTopArtists, setUserTopArtists] = useState([])    // console.log(accessToken)
 
 
@@ -56,24 +56,24 @@ function Landing({ user, accessToken, isLoggedIn }) {
     const userProfilePicture = spotifyUser.images
     console.log(userProfilePicture)
 
-    useEffect(() => {
-        async function fetchMySavedTracks() {
-            let response = await fetch('https://api.spotify.com/v1/me/tracks?limit=50', {
-                method: 'GET',
-                headers: {
-                    'Accept': "application/json",
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${accessToken}`
-                },
-            })
-            response = await response.json()
-            console.log(response.items)
-            setUserSavedTracks(response.items)
-        }
+    // useEffect(() => {
+    //     async function fetchMySavedTracks() {
+    //         let response = await fetch('https://api.spotify.com/v1/me/tracks?limit=50', {
+    //             method: 'GET',
+    //             headers: {
+    //                 'Accept': "application/json",
+    //                 'Content-Type': 'application/json',
+    //                 'Authorization': `Bearer ${accessToken}`
+    //             },
+    //         })
+    //         response = await response.json()
+    //         console.log(response.items)
+    //         setUserSavedTracks(response.items)
+    //     }
 
-        fetchMySavedTracks()
+    //     fetchMySavedTracks()
 
-    }, [accessToken, setUserSavedTracks])
+    // }, [accessToken, setUserSavedTracks])
 
 
     useEffect(() => {
