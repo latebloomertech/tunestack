@@ -1,0 +1,2 @@
+class TsGeneratedPlaylistsController < ApplicationController
+end

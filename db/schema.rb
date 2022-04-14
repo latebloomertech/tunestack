@@ -10,10 +10,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_06_211539) do
+ActiveRecord::Schema.define(version: 2022_04_13_235306) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "rule_sets", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "group_by"
+    t.string "order_tracks_by"
+    t.string "danceability"
+    t.string "tempo"
+    t.string "energy"
+    t.string "instrumentalness"
+    t.string "popularity"
+    t.datetime "date_saved"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "ts_generated_playlists", force: :cascade do |t|
+    t.integer "rule_set_id"
+    t.string "status"
+    t.string "spotify_playlist_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "username"

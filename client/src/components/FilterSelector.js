@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import SelectOption from './SelectOption'
 
-function FilterSelector({ value, label, image, options, handleFilterSelect}) {
+function FilterSelector({ value, label, image, options, handleFilterSelect, filterSelection }) {
     const [selectedOptions, setSelectedOptions] = useState(options.map(option => option.value))
 
     function handleSelect(selectedValue) {

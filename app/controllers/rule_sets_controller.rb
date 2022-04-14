@@ -1,0 +1,2 @@
+class RuleSetsController < ApplicationController
+end
