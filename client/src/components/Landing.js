@@ -103,14 +103,13 @@ function Landing({ user, accessToken, isLoggedIn }) {
 
         <>
             {accessToken ? (
-                <div>
+                <div className='get-started-page'>
                     <h2>Hello {spotifyUser.display_name}</h2>
                     <h3>Your Top Artists:</h3>
                     <TopArtistCardContainer topArtists={topArtists} />
-                    <h3>You have good taste!</h3>
-                    <h3>Ready to create new playlists from your saved songs?</h3>
+                    <p className='get-started-prompt'>Ready to create new playlists from your saved songs?</p>
                     <Link to={`/rules/grouping`} className='flow-previous-link'>
-                        <button className='button button-primary flow-previous-button'>
+                        <button className='button button-secondary'>
                             Let's get Started!
                         </button>
                     </Link>
@@ -140,7 +139,7 @@ function Landing({ user, accessToken, isLoggedIn }) {
                     <h2 className='sign-in-prompt'>Sign in to Spotify to get started:</h2>
 
                     <a href="http://localhost:8888/">
-                        <button className='buttons-general'>Sign in with Spotify</button>
+                        <button className='button button-secondary'>Sign in with Spotify</button>
                     </a>
                 </div>)}
         </>

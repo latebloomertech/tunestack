@@ -93,7 +93,7 @@ const filters = [
 ]
 
 
-function FilteringRules({handleFilterSelect}) {
+function FilteringRules({handleFilterSelect, filterSelection}) {
   return (
     <div className='content-block content-block-primary content-block-flow'>
       <h2 className='flow-header'>What songs do you want to include in the playlists?</h2>
@@ -107,7 +107,8 @@ function FilteringRules({handleFilterSelect}) {
             label={label}
             image={image}
             options={options}
-            handleFilterSelect={handleFilterSelect}>
+            handleFilterSelect={handleFilterSelect}
+            filterSelection={filterSelection}>
           </FilterSelector>
         })}
       </div>

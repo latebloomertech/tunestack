@@ -69,7 +69,7 @@ function App() {
     let newFilterSelection = [].concat(filterSelection)
     const indexOfFilterSet = newFilterSelection.findIndex(filterSet => filterSet.value == value)
     newFilterSelection[indexOfFilterSet].selected_options = newSelectedOptions
-    console.log(value, newFilterSelection)
+    console.log(newFilterSelection)
     setFilterSelection(newFilterSelection)
   }
 
@@ -86,7 +86,7 @@ function App() {
           {/* for user login - add back to Landing  - user={user} */}
           <Route exact path="/" element={<Landing accessToken={accessToken} />} />
           <Route exact path="/rules/grouping" element={<GroupingRules handleGroupingSelect={handleGroupingSelect} groupingSelection={groupingSelection}/>} />
-          <Route exact path="/rules/filtering" element={<FilteringRules handleFilterSelect={handleFilterSelect} />} />
+          <Route exact path="/rules/filtering" element={<FilteringRules handleFilterSelect={handleFilterSelect} filterSelection={filterSelection}/>} />
           <Route exact path="/rules/songorder" element={<SongOrderRules handleSongOrderSelect={handleSongOrderSelect} songOrderSelection={songOrderSelection}/>} />
           <Route exact path="/dashboard" element={<Dashboard accessToken={accessToken} groupingSelection={groupingSelection} songOrderSelection={songOrderSelection} filterSelection={filterSelection}/>} />
           <Route exact path="/logout" element={<Logout setAccessToken={setAccessToken} />} />
