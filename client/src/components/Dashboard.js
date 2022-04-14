@@ -23,9 +23,9 @@ function Dashboard({accessToken, groupingSelection, songOrderSelection, filterSe
 
     fetchMySavedTracks()
 
-}, [accessToken, setUserSavedTracks])
+}, [])
 
-
+// accessToken, setUserSavedTracks  [****Add back to above useEffect array if needed*****]
 
 useEffect(() => {
   async function fetchAudioFeaturesData() {
@@ -51,7 +51,7 @@ useEffect(() => {
 
   fetchAudioFeaturesData()
 
-}, [accessToken, setAudioFeaturesData])
+}, [accessToken, setAudioFeaturesData, userSavedTracks])
 
 
 
