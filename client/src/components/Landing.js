@@ -56,26 +56,7 @@ function Landing({ user, accessToken, isLoggedIn }) {
     const userProfilePicture = spotifyUser.images
     console.log(userProfilePicture)
 
-    // useEffect(() => {
-    //     async function fetchMySavedTracks() {
-    //         let response = await fetch('https://api.spotify.com/v1/me/tracks?limit=50', {
-    //             method: 'GET',
-    //             headers: {
-    //                 'Accept': "application/json",
-    //                 'Content-Type': 'application/json',
-    //                 'Authorization': `Bearer ${accessToken}`
-    //             },
-    //         })
-    //         response = await response.json()
-    //         console.log(response.items)
-    //         setUserSavedTracks(response.items)
-    //     }
-
-    //     fetchMySavedTracks()
-
-    // }, [accessToken, setUserSavedTracks])
-
-
+    
     useEffect(() => {
         async function fetchMyTopArtists() {
             let response = await fetch('https://api.spotify.com/v1/me/top/artists?limit=12', {

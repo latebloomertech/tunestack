@@ -205,6 +205,12 @@ code {
   font-size: small;
 }
 
+.selection-field-value {
+  font-size: 1.1em;
+  font-weight: bold;
+  line-height: 1.6;
+}
+
 .button {
   border: var(--border-primary);
   border-radius: var(--border-radius-small);
