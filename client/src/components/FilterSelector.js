@@ -4,6 +4,7 @@ import SelectOption from './SelectOption'
 function FilterSelector({ value, label, image, options, handleFilterSelect, filterSelection }) {
     const [selectedOptions, setSelectedOptions] = useState(options.map(option => option.value))
 
+
     function handleSelect(selectedValue) {
         let newSelectedOptions = [].concat(selectedOptions)
         if (selectedOptions.includes(selectedValue)) {

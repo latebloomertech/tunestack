@@ -97,7 +97,8 @@ function FilteringRules({handleFilterSelect, filterSelection}) {
   return (
     <div className='content-block content-block-primary content-block-flow'>
       <h2 className='flow-header'>What songs do you want to include in the playlists?</h2>
-      <div className='subtitle'>Deselect any of the options below to remove songs that match:</div>
+      <div className='subtitle'>Deselect any of the options below to remove songs that you don't want included:<br></br>
+      blue: include  pink: don't include</div>
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '2em', marginBottom: '2em' }}>
         {filters.map(({ value, label, image, options }) => {
           return <FilterSelector

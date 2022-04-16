@@ -42,7 +42,7 @@ function App() {
       while (e = r.exec(q)) {
         hashParams[e[1]] = decodeURIComponent(e[2]);
       }
-      console.log(hashParams.access_token)
+      // console.log(hashParams.access_token)
 
       setAccessToken(hashParams.access_token);
 
@@ -54,22 +54,22 @@ function App() {
 
 
   function handleGroupingSelect(value) {
-    console.log(value)
+    // console.log(value)
     setGroupingSelection(value)
   }
 
   function handleSongOrderSelect(value) {
-    console.log(value)
+    // console.log(value)
     setSongOrderSelection(value)
 
   }
 
   function handleFilterSelect(value, newSelectedOptions) {
-    console.log(value, newSelectedOptions)
+    // console.log(value, newSelectedOptions)
     let newFilterSelection = [].concat(filterSelection)
     const indexOfFilterSet = newFilterSelection.findIndex(filterSet => filterSet.value == value)
     newFilterSelection[indexOfFilterSet].selected_options = newSelectedOptions
-    console.log(newFilterSelection)
+    // console.log(newFilterSelection)
     setFilterSelection(newFilterSelection)
   }
 
