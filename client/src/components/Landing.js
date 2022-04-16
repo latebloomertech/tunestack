@@ -9,8 +9,10 @@ import TopArtistCardContainer from './TopArtistCardContainer';
 function Landing({ user, accessToken, isLoggedIn }) {
     const [spotifyUser, setSpotifyUser] = useState([])
     const [userPlaylists, setUserPlaylists] = useState([])
-    // const [userSavedTracks, setUserSavedTracks] = useState([])
-    const [userTopArtists, setUserTopArtists] = useState([])    // console.log(accessToken)
+    const [userTopArtists, setUserTopArtists] = useState([])
+    const [tuneStackUser, setTuneStackUser] = useState([])
+
+    // console.log(accessToken)
 
 
     useEffect(() => {
@@ -54,9 +56,9 @@ function Landing({ user, accessToken, isLoggedIn }) {
     const playlists = userPlaylists.items
     // console.log(playlists)
     const userProfilePicture = spotifyUser.images
-    console.log(userProfilePicture)
+    // console.log(userProfilePicture)
 
-    
+
     useEffect(() => {
         async function fetchMyTopArtists() {
             let response = await fetch('https://api.spotify.com/v1/me/top/artists?limit=12', {
@@ -68,18 +70,17 @@ function Landing({ user, accessToken, isLoggedIn }) {
                 },
             })
             response = await response.json()
-            console.log(response)
+            // console.log(response)
             setUserTopArtists(response)
         }
 
         fetchMyTopArtists()
 
     }, [accessToken, setUserTopArtists])
-    // const savedtracks = userSavedTracks.items
-    // console.log(savedtracks)
+
 
     const topArtists = userTopArtists.items
-    console.log(topArtists)
+    // console.log(topArtists)
     return (
 
         <>

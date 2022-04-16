@@ -4,7 +4,8 @@ import PlaylistBoard from "./PlaylistBoard"
 
 function Dashboard({accessToken, groupingSelection, songOrderSelection, filterSelection}) {
   const [userSavedTracks, setUserSavedTracks] = useState([])
-  const [audoFeaturesData, setAudioFeaturesData] = useState([])
+  const [audioFeaturesData, setAudioFeaturesData] = useState([])
+  const [combinedTrackData, setCombinedTrackData] = useState([])
 
   useEffect(() => {
     async function fetchMySavedTracks() {
@@ -17,7 +18,7 @@ function Dashboard({accessToken, groupingSelection, songOrderSelection, filterSe
             },
         })
         response = await response.json()
-        console.log(response.items)
+        // console.log(response.items)
         setUserSavedTracks(response.items)
     }
 
@@ -31,12 +32,11 @@ useEffect(() => {
   async function fetchAudioFeaturesData() {
 
     const savedTracksArray = userSavedTracks?.map(item => item.track.id)
-    console.log(savedTracksArray)
+    console.log('saved tracks array', savedTracksArray)
 
-    const savedTracksString = String(savedTracksArray)
-    console.log(savedTracksString)
 
-      let response = await fetch(`https://api.spotify.com/v1/audio-features?ids=${savedTracksString}`, {
+
+      let response = await fetch(`https://api.spotify.com/v1/audio-features?ids=${savedTracksArray.join(',')}`, {
           method: 'GET',
           headers: {
               'Accept': "application/json",
@@ -45,16 +45,32 @@ useEffect(() => {
           },
       })
       response = await response.json()
-      console.log(response)
-      setAudioFeaturesData(response)
+      console.log(response.audio_features)
+      setAudioFeaturesData(response.audio_features)
+
   }
 
   fetchAudioFeaturesData()
 
+
 }, [accessToken, setAudioFeaturesData, userSavedTracks])
 
+// const allTrackData = userSavedTracks?.concat(audioFeaturesData)
+// console.log(allTrackData)
 
+const basicTrackData = userSavedTracks?.map(item => item.track)
+console.log(basicTrackData)
 
+// const allTrackData = basicTrackData?.map(t1 => {
+//   console.log('T1', t1)
+//   console.log('AUDIOFEAT', audioFeaturesData)
+//   if (audioFeaturesData && audioFeaturesData[0] !== null) {
+//     return ({...t1, ...audioFeaturesData?.find(t2 => t2.id === t1.id)})
+//   } else {
+//     return {...t1}
+//   }
+// })
+// console.log(allTrackData)
 
   return (
     <div>

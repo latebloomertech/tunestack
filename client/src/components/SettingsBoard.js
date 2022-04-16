@@ -8,7 +8,7 @@ function SettingsBoard({groupingSelection, songOrderSelection, filterSelection})
 
 
 
-  console.log(filterSelection)
+  // console.log(filterSelection)
 
   return (
     <div className='content-block content-block-primary'>

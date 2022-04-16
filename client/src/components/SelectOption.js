@@ -9,7 +9,7 @@ function SelectOption({ handleSelect, selected, value, label, image }) {
     return (<button value={value}
         className={`content-block content-block-tertiary content-block-select-option ${selected ? 'content-block-select-option-selected' : ''}`}
         onClick={handleClick}>
-        {console.log(selected)}
+        {/* {console.log(selected)} */}
         <h4>{label}</h4>
         <img src={image} className='select-option-image'></img>
     </button>
