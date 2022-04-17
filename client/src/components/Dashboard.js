@@ -1,15 +1,17 @@
 import React, {useEffect, useState} from 'react'
 import SettingsBoard from "./SettingsBoard"
 import PlaylistBoard from "./PlaylistBoard"
+import allTrackData from "./allTrackData.json"
 
 function Dashboard({accessToken, groupingSelection, songOrderSelection, filterSelection}) {
   const [userSavedTracks, setUserSavedTracks] = useState([])
   const [audioFeaturesData, setAudioFeaturesData] = useState([])
   const [combinedTrackData, setCombinedTrackData] = useState([])
 
+
   useEffect(() => {
     async function fetchMySavedTracks() {
-        let response = await fetch('https://api.spotify.com/v1/me/tracks?limit=50', {
+        let response = await fetch('https://api.spotify.com/v1/me/tracks?limit=50&market=US', {
             method: 'GET',
             headers: {
                 'Accept': "application/json",
@@ -61,16 +63,18 @@ useEffect(() => {
 const basicTrackData = userSavedTracks?.map(item => item.track)
 console.log(basicTrackData)
 
-// const allTrackData = basicTrackData?.map(t1 => {
-//   console.log('T1', t1)
-//   console.log('AUDIOFEAT', audioFeaturesData)
-//   if (audioFeaturesData && audioFeaturesData[0] !== null) {
-//     return ({...t1, ...audioFeaturesData?.find(t2 => t2.id === t1.id)})
-//   } else {
-//     return {...t1}
-//   }
-// })
-// console.log(allTrackData)
+const allTrackData = basicTrackData?.map(t1 => {
+  console.log('T1', t1)
+  console.log('AUDIOFEAT', audioFeaturesData)
+  if (audioFeaturesData && audioFeaturesData[0] !== null) {
+    return ({...t1, ...audioFeaturesData?.find(t2 => t2.id === t1.id)})
+  } else {
+    return {...t1}
+  }
+})
+console.log(allTrackData)
+console.log(filterSelection)
+
 
   return (
     <div>

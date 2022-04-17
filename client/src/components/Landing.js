@@ -95,17 +95,7 @@ function Landing({ user, accessToken, isLoggedIn }) {
                             Let's get Started!
                         </button>
                     </Link>
-                    {/* <ul>{playlists?.map(item =>
-                    <UserPlaylistDetail
-                    key={item.id}
-                playlist={item}/>)}</ul> */}
-                    {/* <div>
-            <ul>{savedtracks?.map(item =>
-                    <UserSavedTracksDetail
-                    key={item.track.id}
-                    savedtracks={item}/>)}</ul>
-            </div> */}
-                </div>
+                  </div>
             ) : (
                 <div className='splash'>
                     <h2 className='fade-in-text'> Welcome to TuneStack</h2>
@@ -175,3 +165,15 @@ export default Landing
                 <button className="button-test" type="submit">Temp Login</button>
             </form>
         </div> */
+
+
+                  /* <ul>{playlists?.map(item =>
+                    <UserPlaylistDetail
+                    key={item.id}
+                playlist={item}/>)}</ul> */
+                    /* <div>
+            <ul>{savedtracks?.map(item =>
+                    <UserSavedTracksDetail
+                    key={item.track.id}
+                    savedtracks={item}/>)}</ul>
+            </div> */
