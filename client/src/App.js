@@ -8,6 +8,7 @@ import GroupingRules from "./components/GroupingRules"
 import FilteringRules from "./components/FilteringRules"
 import SongOrderRules from "./components/SongOrderRules"
 import Logout from './components/Logout';
+// import spotify_login from './helper_functions/spotify_login';
 
 
 function App() {
@@ -33,6 +34,7 @@ function App() {
     },
   ])
 
+  // spotify_login()
 
   useEffect(() => {
     function getHashParams() {
@@ -50,8 +52,6 @@ function App() {
     getHashParams()
 
   }, [setAccessToken])
-
-
 
   function handleGroupingSelect(value) {
     // console.log(value)

@@ -13,8 +13,6 @@ function Landing({ user, accessToken, isLoggedIn }) {
     const [tuneStackUser, setTuneStackUser] = useState([])
 
     // console.log(accessToken)
-
-
     useEffect(() => {
         async function fetchMyAPI() {
             let response = await fetch('https://api.spotify.com/v1/me', {
@@ -95,8 +93,8 @@ function Landing({ user, accessToken, isLoggedIn }) {
                             Let's get Started!
                         </button>
                     </Link>
-                  </div>
-            ) : (
+                </div>
+            ) : (<div>
                 <div className='splash'>
                     <h2 className='fade-in-text'> Welcome to TuneStack</h2>
 
@@ -113,7 +111,9 @@ function Landing({ user, accessToken, isLoggedIn }) {
                     <a href="http://localhost:8888/">
                         <button className='button button-secondary'>Sign in with Spotify</button>
                     </a>
-                </div>)}
+                </div>
+
+            </div>)}
         </>
     )
 }
@@ -167,13 +167,13 @@ export default Landing
         </div> */
 
 
-                  /* <ul>{playlists?.map(item =>
-                    <UserPlaylistDetail
-                    key={item.id}
-                playlist={item}/>)}</ul> */
-                    /* <div>
-            <ul>{savedtracks?.map(item =>
-                    <UserSavedTracksDetail
-                    key={item.track.id}
-                    savedtracks={item}/>)}</ul>
-            </div> */
+/* <ul>{playlists?.map(item =>
+  <UserPlaylistDetail
+  key={item.id}
+playlist={item}/>)}</ul> */
+/* <div>
+<ul>{savedtracks?.map(item =>
+<UserSavedTracksDetail
+key={item.track.id}
+savedtracks={item}/>)}</ul>
+</div> */
