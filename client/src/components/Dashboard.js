@@ -59,8 +59,8 @@ function Dashboard({ accessToken, groupingSelection, songOrderSelection, filterS
   console.log(basicTrackData)
 
   const allTrackData = basicTrackData?.map(t1 => {
-    console.log('T1', t1)
-    console.log('AUDIOFEAT', audioFeaturesData)
+    // console.log('T1', t1)
+    // console.log('AUDIOFEAT', audioFeaturesData)
     if (audioFeaturesData && audioFeaturesData[0] !== null) {
       return ({ ...t1, ...audioFeaturesData?.find(t2 => t2.id === t1.id) })
     } else {
