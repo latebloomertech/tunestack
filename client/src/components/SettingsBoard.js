@@ -4,7 +4,7 @@ import DashboardSettingsContainer from './DashboardSettingsContainer'
 import FilterSelectionDetail from './FilterSelectionDetail'
 
 
-function SettingsBoard({groupingSelection, songOrderSelection, filterSelection}) {
+function SettingsBoard({ groupingSelection, songOrderSelection, filterSelection }) {
 
 
 
@@ -13,7 +13,7 @@ function SettingsBoard({groupingSelection, songOrderSelection, filterSelection})
   return (
     <div className='content-block content-block-primary'>
       <h2>User Settings</h2>
-      <div style={{ display: 'grid', gridTemplateColumns: 'auto auto auto', gap: '1em', marginBottom: '1em'}}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'auto auto auto', gap: '1em', marginBottom: '1em' }}>
         <DashboardSettingsContainer>
           <h3>Grouping Settings</h3>
           <p className='data-field-label'>Group by:</p>
@@ -21,12 +21,12 @@ function SettingsBoard({groupingSelection, songOrderSelection, filterSelection})
         </DashboardSettingsContainer>
         <DashboardSettingsContainer>
           <h3>Filter Settings</h3>
-          <p className='data-field-label'>Include the following:</p>
+          <p className='data-field-label'>Exlude songs that match the following:</p>
           <div>
-          {filterSelection?.map(item =>
-        <FilterSelectionDetail
-        key={item.value}
-        filter={item} />)}
+            {filterSelection?.map(filter =>
+              <FilterSelectionDetail
+                key={filter.value}
+                filter={filter} />)}
           </div>
         </DashboardSettingsContainer>
         <DashboardSettingsContainer>
