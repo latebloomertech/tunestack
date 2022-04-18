@@ -1,4 +1,4 @@
-const filters = [
+const filter_values = [
     {
       value: 'danceability',
       label: 'Danceability',
@@ -130,4 +130,4 @@ const filters = [
 //     }
 // }
 
-export default filters
+export default filter_values

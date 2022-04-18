@@ -1,12 +1,25 @@
 import React from 'react'
 
-function FilterSelectionDetail({filter}) {
+function FilterSelectionDetail({ filter }) {
+  // const selected_options = filter.selected_options
+  let show_filter = false
+  let filtered_options = []
+
+  for (const [option, value] of Object.entries(filter.selected_options)) {
+    if (!value) { filtered_options.push(option) }
+  }
+
+  if (filtered_options.length > 0) { show_filter = true }
 
   return (
-
-    <div className='selection-field-value'>
-        {filter.value}: {filter.selected_options[0]} {filter.selected_options[1]} {filter.selected_options[2]}
-    </div>
+    <>
+      {show_filter ?
+        <div className='selection-field-value'>
+          {filter.value}: {filtered_options}
+        </div>
+        : <></>
+      }
+    </>
   )
 }
 

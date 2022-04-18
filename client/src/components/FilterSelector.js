@@ -2,15 +2,15 @@ import React, { useState } from 'react'
 import SelectOption from './SelectOption'
 
 function FilterSelector({ value, label, image, options, handleFilterSelect, filterSelection }) {
-    const [selectedOptions, setSelectedOptions] = useState(options.map(option => option.value))
 
+    const [selectedOptions, setSelectedOptions] = useState(filterSelection.filter(f => f.value == value)[0].selected_options)
 
     function handleSelect(selectedValue) {
-        let newSelectedOptions = [].concat(selectedOptions)
-        if (selectedOptions.includes(selectedValue)) {
-            newSelectedOptions.splice(selectedOptions.indexOf(selectedValue), 1)
+        let newSelectedOptions = {...selectedOptions}
+        if (selectedOptions[selectedValue]) {
+            newSelectedOptions[selectedValue] = false
         } else {
-            newSelectedOptions.push(selectedValue)
+            newSelectedOptions[selectedValue] = true
         }
         setSelectedOptions(newSelectedOptions)
         handleFilterSelect(value, newSelectedOptions)
@@ -23,7 +23,7 @@ function FilterSelector({ value, label, image, options, handleFilterSelect, filt
                 {options.map(({ value, label, image }) => {
                     return <SelectOption
                         key={value}
-                        selected={selectedOptions.includes(value)}
+                        selected={selectedOptions[value]}
                         handleSelect={handleSelect}
                         value={value}
                         label={label}
