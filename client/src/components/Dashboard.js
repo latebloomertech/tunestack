@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import SettingsBoard from "./SettingsBoard"
 import PlaylistBoard from "./PlaylistBoard"
 import allTrackData from "./allTrackData.json"
+import filter_tracks from '../helper_functions/filter_tracks'
 
 function Dashboard({ accessToken, groupingSelection, songOrderSelection, filterSelection }) {
   const [userSavedTracks, setUserSavedTracks] = useState([])
@@ -69,6 +70,8 @@ function Dashboard({ accessToken, groupingSelection, songOrderSelection, filterS
   })
   console.log('ALL TRACK DATA BIIIITCH', allTrackData)
   console.log('FILTER SELECTION', filterSelection)
+
+  console.log('filtered array of tracks', filter_tracks(allTrackData, filterSelection))
 
 
   return (

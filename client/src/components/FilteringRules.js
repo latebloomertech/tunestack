@@ -1,9 +1,9 @@
 import React from 'react'
 import { Link } from "react-router-dom"
+import filter_values from '../settings/filter_values'
 import FilterSelector from './FilterSelector'
 
-const filters = 
-
+const filters = filter_values
 
 function FilteringRules({handleFilterSelect, filterSelection}) {
   return (
@@ -13,6 +13,7 @@ function FilteringRules({handleFilterSelect, filterSelection}) {
       blue: include  pink: don't include</div>
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '2em', marginBottom: '2em' }}>
         {filters.map(({ value, label, image, options }) => {
+          console.log("options", options)
           return <FilterSelector
             key={value}
             // handleSelect={handleSelect}

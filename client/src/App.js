@@ -18,19 +18,39 @@ function App() {
   const [filterSelection, setFilterSelection] = useState([
     {
       value: 'danceability',
-      selected_options: ['high', 'medium', 'low']
+      selected_options: {
+        high: true, 
+        medium: true, 
+        low: true
+      }
     }, {
       value: 'tempo',
-      selected_options: ['high', 'medium', 'low']
+      selected_options: {
+        high: true, 
+        medium: true, 
+        low: true
+      }
     }, {
       value: 'energy',
-      selected_options: ['high', 'medium', 'low']
+      selected_options: {
+        high: true, 
+        medium: true, 
+        low: true
+      }
     }, {
       value: 'instrumentalness',
-      selected_options: ['high', 'medium', 'low']
+      selected_options: {
+        high: true, 
+        medium: true, 
+        low: true
+      }
     }, {
       value: 'popularity',
-      selected_options: ['high', 'medium', 'low']
+      selected_options: {
+        high: true, 
+        medium: true, 
+        low: true
+      }
     },
   ])
 
@@ -65,11 +85,11 @@ function App() {
   }
 
   function handleFilterSelect(value, newSelectedOptions) {
-    // console.log(value, newSelectedOptions)
+    console.log(value, newSelectedOptions)
     let newFilterSelection = [].concat(filterSelection)
     const indexOfFilterSet = newFilterSelection.findIndex(filterSet => filterSet.value == value)
     newFilterSelection[indexOfFilterSet].selected_options = newSelectedOptions
-    // console.log(newFilterSelection)
+    console.log(newFilterSelection)
     setFilterSelection(newFilterSelection)
   }
 
