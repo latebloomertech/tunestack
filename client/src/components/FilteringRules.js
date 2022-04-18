@@ -3,7 +3,9 @@ import { Link } from "react-router-dom"
 import filter_values from '../settings/filter_values'
 import FilterSelector from './FilterSelector'
 
+
 const filters = filter_values
+
 
 function FilteringRules({handleFilterSelect, filterSelection}) {
   return (
