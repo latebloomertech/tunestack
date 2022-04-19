@@ -31,9 +31,6 @@ function Landing({ user, accessToken, isLoggedIn }) {
 
     }, [accessToken, setSpotifyUser])
 
-
-
-
     const userProfilePicture = spotifyUser.images
     // console.log(userProfilePicture)
 

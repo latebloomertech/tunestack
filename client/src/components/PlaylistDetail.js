@@ -1,18 +1,55 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import TrackDetail from './TrackDetail';
 import { Link } from "react-router-dom"
 
 
-function PlaylistDetail({ title, tracks }) {
+function PlaylistDetail({ title, tracks, accessToken}) {
   const [showTracks, setShowTracks] = useState(false);
+  const [spotifyUserData, setSpotifyUserData] = useState([])
 
   const handleClick = () => {
     showTracks ? setShowTracks(false) : setShowTracks(true)
   }
 
+  useEffect(() => {
+    async function fetchMyAPI() {
+        let response = await fetch('https://api.spotify.com/v1/me', {
+            method: 'GET',
+            headers: {
+                'Accept': "application/json",
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${accessToken}`
+            },
+        })
+        response = await response.json()
+        console.log('SPOTIFY USER DATA', response)
+        setSpotifyUserData(response)
+    }
+
+    fetchMyAPI()
+
+}, [accessToken, setSpotifyUserData])
+
+
   const handleSaveClick = () => {
 
-  }
+    const createdPlaylist = {
+      "name": title,
+      "description": "TuneStack created"
+    }
+
+        fetch(`https://api.spotify.com/v1/users/${spotifyUserData.id}/playlists`, {
+        method: 'POST',
+        headers: {
+          'Accept': "application/json",
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${accessToken}`
+      },
+        body: JSON.stringify(createdPlaylist),
+    })
+    .then((response) => response.json())
+    .then((data) => console.log('CREATE PLAYLIST', data))
+}
 
 console.log ('tracks', tracks)
 console.log('TITLE !!', title)
@@ -35,7 +72,7 @@ console.log('TITLE !!', title)
         </div>
         <button className='button button-primary' onClick={handleClick}>{showTracks ? 'Hide Tracks' : 'View Tracks'}</button>
         <Link to={"/playlists"}>
-        <button className='button button-primary'>Save</button>
+        <button className='button button-primary' onClick={handleSaveClick}>Save</button>
         </Link>
       </div>
 
@@ -61,3 +98,26 @@ console.log('TITLE !!', title)
 export default PlaylistDetail
 
 // 'https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228'
+
+
+// useEffect(() => {
+//   async function postTuneStackPlaylist() {
+//     let response = await fetch(`https://api.spotify.com/v1/users/${spotifyUserData.id}/playlists`, {
+//       method: 'POST',
+//       headers: {
+//         'Accept': "application/json",
+//         'Content-Type': 'application/json',
+//         'Authorization': `Bearer ${accessToken}`
+//     },
+//       body: {
+//         'name' : `TuneStack ${title}`,
+//         'description' : 'TuneStack created'
+//       }
+//   })
+//   response = await response.json()
+//   console.log('POST PLAYLIST RESPONSE', response)
+// }
+
+// postTuneStackPlaylist()
+
+// }, [accessToken, spotifyUserData])
