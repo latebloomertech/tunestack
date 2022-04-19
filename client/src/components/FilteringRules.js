@@ -15,7 +15,7 @@ function FilteringRules({handleFilterSelect, filterSelection}) {
       blue: include  pink: don't include</div>
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '2em', marginBottom: '2em' }}>
         {filters.map(({ value, label, image, options }) => {
-          console.log("options", options)
+          // console.log("options", options)
           return <FilterSelector
             key={value}
             // handleSelect={handleSelect}

@@ -22,7 +22,7 @@ function Dashboard({ accessToken, groupingSelection, songOrderSelection, filterS
         },
       })
       response = await response.json()
-      console.log('fetchMySavedTracks response', response.items)
+      // console.log('fetchMySavedTracks response', response.items)
       setUserSavedTracks(response.items)
     }
 
@@ -37,7 +37,7 @@ function Dashboard({ accessToken, groupingSelection, songOrderSelection, filterS
     async function fetchAudioFeaturesData() {
 
       const savedTracksArray = userSavedTracks?.map(item => item.track.id)
-      console.log('saved tracks array', savedTracksArray)
+      // console.log('saved tracks array', savedTracksArray)
       let response = await fetch(`https://api.spotify.com/v1/audio-features?ids=${savedTracksArray.join(',')}`, {
         method: 'GET',
         headers: {
@@ -47,7 +47,7 @@ function Dashboard({ accessToken, groupingSelection, songOrderSelection, filterS
         },
       })
       response = await response.json()
-      console.log('audio features', response.audio_features)
+      // console.log('audio features', response.audio_features)
       setAudioFeaturesData(response.audio_features)
     }
 
@@ -66,7 +66,7 @@ function Dashboard({ accessToken, groupingSelection, songOrderSelection, filterS
     track['added_at'] = date_added
     return track
   })
-  console.log('basicTrackData', basicTrackData)
+  // console.log('basicTrackData', basicTrackData)
 
   const allTrackData = basicTrackData?.map(t1 => {
     // console.log('T1', t1)
@@ -77,18 +77,18 @@ function Dashboard({ accessToken, groupingSelection, songOrderSelection, filterS
       return { ...t1 }
     }
   })
-  console.log('ALL TRACK DATA', allTrackData)
-  console.log('FILTER SELECTION', filterSelection)
+  // console.log('ALL TRACK DATA', allTrackData)
+  // console.log('FILTER SELECTION', filterSelection)
 
   const filtered_tracks = filter_tracks(allTrackData, filterSelection)
 
-  console.log('filtered array of tracks', filtered_tracks)
+  // console.log('filtered array of tracks', filtered_tracks)
 
   // useEffect(() => {
     const grouped_tracks = group_tracks(filtered_tracks, groupingSelection)
     // setGroupedTracks(grouped_tracks)
 
-    console.log('grouped playlists', grouped_tracks)
+    // console.log('grouped playlists', grouped_tracks)
 
   // }, [groupingSelection, filtered_tracks, setGroupedTracks, groupedTracks])
 
