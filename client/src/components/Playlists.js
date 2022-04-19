@@ -35,7 +35,8 @@ function Playlists({ accessToken }) {
             <ul>{playlists?.map(item =>
                 <UserPlaylistDetail
                     key={item.id}
-                    playlist={item} />)}</ul>
+                    playlist={item}
+                    accessToken={accessToken}/>)}</ul>
         </div>
     )
 }
