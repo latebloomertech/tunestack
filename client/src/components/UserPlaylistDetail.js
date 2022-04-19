@@ -19,7 +19,7 @@ function UserPlaylistDetail({playlist}) {
             <div className='data-field-value'>{playlist.tracks.total}</div>
           </div>
         </div>
-        <button className='button button-primary'>Future</button>
+        <button className='button button-primary'>Modify</button>
       </div>
       </div>
   )

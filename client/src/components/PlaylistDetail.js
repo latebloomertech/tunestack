@@ -3,7 +3,7 @@ import TrackDetail from './TrackDetail';
 import { Link } from "react-router-dom"
 
 
-function PlaylistDetail({ title, tracks, accessToken}) {
+function PlaylistDetail({ title, tracks, accessToken }) {
   const [showTracks, setShowTracks] = useState(false);
   const [spotifyUserData, setSpotifyUserData] = useState([])
   // const [newPlaylist, setNewPlaylist] = useState([])
@@ -14,22 +14,22 @@ function PlaylistDetail({ title, tracks, accessToken}) {
 
   useEffect(() => {
     async function fetchMyAPI() {
-        let response = await fetch('https://api.spotify.com/v1/me', {
-            method: 'GET',
-            headers: {
-                'Accept': "application/json",
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${accessToken}`
-            },
-        })
-        response = await response.json()
-        // console.log('SPOTIFY USER DATA', response)
-        setSpotifyUserData(response)
+      let response = await fetch('https://api.spotify.com/v1/me', {
+        method: 'GET',
+        headers: {
+          'Accept': "application/json",
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${accessToken}`
+        },
+      })
+      response = await response.json()
+      // console.log('SPOTIFY USER DATA', response)
+      setSpotifyUserData(response)
     }
 
     fetchMyAPI()
 
-}, [accessToken, setSpotifyUserData])
+  }, [accessToken, setSpotifyUserData])
 
 
   const handleSaveClick = () => {
@@ -39,45 +39,51 @@ function PlaylistDetail({ title, tracks, accessToken}) {
       "description": "TuneStack created"
     }
 
-        fetch(`https://api.spotify.com/v1/users/${spotifyUserData.id}/playlists`, {
-        method: 'POST',
-        headers: {
-          'Accept': "application/json",
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${accessToken}`
+    fetch(`https://api.spotify.com/v1/users/${spotifyUserData.id}/playlists`, {
+      method: 'POST',
+      headers: {
+        'Accept': "application/json",
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${accessToken}`
       },
-        body: JSON.stringify(createdPlaylist),
+      body: JSON.stringify(createdPlaylist),
     })
-    .then((response) => response.json())
-    .then((data) => addPlaylistTracks(data))
+      .then((response) => response.json())
+      .then((data) => addPlaylistTracks(data))
+  }
 
-}
+  const addPlaylistTracks = (newPlaylist) => {
 
-const addPlaylistTracks = (newPlaylist) => {
+    const newPlaylistTracksIDArray = tracks?.map(track => {
+      const trackArray = `spotify:track:${track.id}`
+      return trackArray})
 
-  fetch(`https://api.spotify.com/v1/playlists/${newPlaylist.id}/tracks?uris=spotify:track:60NwgFF3bzbpSmB3cSSAba`, {
-    method: 'POST',
-    headers: {
-      'Accept': "application/json",
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${accessToken}`
-  },
-})
-.then((response) => response.json())
-.then((data) => console.log('ADDED TRACK TO PLAYLIST', data))
+    console.log('HELLO', newPlaylistTracksIDArray)
 
-}
+    const playlistTracksString = `${newPlaylistTracksIDArray.join(',')}`
+    console.log('THE STRING', playlistTracksString)
 
-// console.log ('tracks', tracks)
-// console.log('TITLE !!', title)
+    fetch(`https://api.spotify.com/v1/playlists/${newPlaylist.id}/tracks?uris=${playlistTracksString}`, {
+      method: 'POST',
+      headers: {
+        'Accept': "application/json",
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${accessToken}`
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => console.log('ADDED TRACK TO PLAYLIST', data))
 
+  }
 
+  // console.log ('tracks', tracks)
+  // console.log('TITLE !!', title)
 
   return (
     <div className='content-block content-block-secondary'>
       <div className='content-block-playlist'>
         <div className='playlist-details'>
-          <img src={tracks[0].album.images[0].url}className='playlist-image' />
+          <img src={tracks[0].album.images[0].url} className='playlist-image' />
           <div className='data-field'>
             <label className='data-field-label'>Playlist Name</label>
             <div className='data-field-value'>{title}</div>
@@ -90,7 +96,7 @@ const addPlaylistTracks = (newPlaylist) => {
         </div>
         <button className='button button-primary' onClick={handleClick}>{showTracks ? 'Hide Tracks' : 'View Tracks'}</button>
         <Link to={"/playlists"}>
-        <button className='button button-primary' onClick={handleSaveClick}>Save</button>
+          <button className='button button-primary' onClick={handleSaveClick}>Save</button>
         </Link>
       </div>
 
@@ -102,7 +108,7 @@ const addPlaylistTracks = (newPlaylist) => {
               name={track.name}
               artist_name={track.artists[0].name}
               duration={track.duration}
-              image={track.album.images[0].url}/>
+              image={track.album.images[0].url} />
           })
         }
       </div>)
