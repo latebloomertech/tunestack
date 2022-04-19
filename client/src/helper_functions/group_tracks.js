@@ -11,9 +11,10 @@
 
 import {grouping_options, quarter_definitions } from "../settings/grouping_settings"
 
-function group_tracks(tracks, grouping_selection) {
+export function group_tracks(tracks, grouping_selection) {
     const options = grouping_options
     const grouping_selection_settings = options.filter(o => o.value == grouping_selection)[0]
+    console.log('grouping_selection_settings', grouping_selection_settings)
     let grouping_result = {}
 
     if (grouping_selection_settings.type === 'date_added') {
@@ -106,7 +107,8 @@ function group_by_attribute_range(tracks, grouping_selection_settings) {
                 }
             }
         }
-    }
+    }   
+    return grouping_result
 }
 
     // callback function if the chosen category is date
