@@ -418,12 +418,6 @@ code {
   margin: 1.5em;
 }
 
-.flow-card-next {
-  display: flex;
-  justify-content: end;
-  margin: 1.5em;
-
-}
 .card-container {
   /* background-color: #ededed; */
   /* width: 100%; */
