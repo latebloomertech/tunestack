@@ -8,6 +8,7 @@ import GroupingRules from "./components/GroupingRules"
 import FilteringRules from "./components/FilteringRules"
 import SongOrderRules from "./components/SongOrderRules"
 import Logout from './components/Logout';
+import Playlists from './components/Playlists';
 // import spotify_login from './helper_functions/spotify_login';
 
 
@@ -19,36 +20,36 @@ function App() {
     {
       value: 'danceability',
       selected_options: {
-        high: true, 
-        medium: true, 
+        high: true,
+        medium: true,
         low: true
       }
     }, {
       value: 'tempo',
       selected_options: {
-        high: true, 
-        medium: true, 
+        high: true,
+        medium: true,
         low: true
       }
     }, {
       value: 'energy',
       selected_options: {
-        high: true, 
-        medium: true, 
+        high: true,
+        medium: true,
         low: true
       }
     }, {
       value: 'instrumentalness',
       selected_options: {
-        high: true, 
-        medium: true, 
+        high: true,
+        medium: true,
         low: true
       }
     }, {
       value: 'popularity',
       selected_options: {
-        high: true, 
-        medium: true, 
+        high: true,
+        medium: true,
         low: true
       }
     },
@@ -110,6 +111,7 @@ function App() {
           <Route exact path="/rules/songorder" element={<SongOrderRules handleSongOrderSelect={handleSongOrderSelect} songOrderSelection={songOrderSelection}/>} />
           <Route exact path="/dashboard" element={<Dashboard accessToken={accessToken} groupingSelection={groupingSelection} songOrderSelection={songOrderSelection} filterSelection={filterSelection}/>} />
           <Route exact path="/logout" element={<Logout setAccessToken={setAccessToken} />} />
+          <Route exact path="/playlists" element={<Playlists accessToken={accessToken} />} />
         </Routes>
       </div>
     </BrowserRouter>

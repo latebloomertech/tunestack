@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import UserPlaylistDetail from './UserPlaylistDetail';
 import UserSavedTracksDetail from './UserSavedTracksDetail';
 import UserDetail from './UserDetail';
 import { Link } from "react-router-dom"
@@ -32,27 +31,9 @@ function Landing({ user, accessToken, isLoggedIn }) {
 
     }, [accessToken, setSpotifyUser])
 
-    useEffect(() => {
-        async function fetchMyPlaylists() {
-            let response = await fetch('https://api.spotify.com/v1/me/playlists', {
-                method: 'GET',
-                headers: {
-                    'Accept': "application/json",
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${accessToken}`
-                },
-            })
-            response = await response.json()
-            // console.log(response)
-            setUserPlaylists(response)
-        }
 
-        fetchMyPlaylists()
 
-    }, [accessToken, setUserPlaylists])
 
-    const playlists = userPlaylists.items
-    // console.log(playlists)
     const userProfilePicture = spotifyUser.images
     // console.log(userProfilePicture)
 
@@ -167,10 +148,7 @@ export default Landing
         </div> */
 
 
-/* <ul>{playlists?.map(item =>
-  <UserPlaylistDetail
-  key={item.id}
-playlist={item}/>)}</ul> */
+
 /* <div>
 <ul>{savedtracks?.map(item =>
 <UserSavedTracksDetail

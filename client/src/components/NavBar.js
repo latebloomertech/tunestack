@@ -7,11 +7,13 @@ function NavBar({handleLogout}) {
     return (
         <div>
             <nav className='navbar'>
-                <NavLink className="navlink" to="/">Landing</NavLink>
+                {/* <NavLink className="navlink" to="/">Landing</NavLink> */}
                 <NavLink className="navlink" to="/dashboard">Dashboard</NavLink>
                 <NavLink className="navlink" to="/rules/grouping">Grouping</NavLink>
                 <NavLink className="navlink" to="/rules/filtering">Filtering</NavLink>
                 <NavLink className="navlink" to="/rules/songorder">Song Order</NavLink>
+                <NavLink className="navlink" to="/playlists">My Playlists</NavLink>
+
             </nav>
             <Link to={`/logout`}>
             <button onClick={handleLogout} className='button button-secondary'>Logout</button>

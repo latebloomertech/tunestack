@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import TrackDetail from './TrackDetail';
+import { Link } from "react-router-dom"
+
 
 function PlaylistDetail({ title, tracks }) {
   const [showTracks, setShowTracks] = useState(false);
@@ -9,7 +11,7 @@ function PlaylistDetail({ title, tracks }) {
   }
 
   const handleSaveClick = () => {
-    
+
   }
 
 console.log ('tracks', tracks)
@@ -32,7 +34,9 @@ console.log('TITLE !!', title)
           </div>
         </div>
         <button className='button button-primary' onClick={handleClick}>{showTracks ? 'Hide Tracks' : 'View Tracks'}</button>
+        <Link to={"/playlists"}>
         <button className='button button-primary'>Save</button>
+        </Link>
       </div>
 
       {showTracks ? (<div>
