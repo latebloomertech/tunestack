@@ -16,7 +16,7 @@ function UserPlaylistDetail({playlist}) {
 
           <div className='data-field'>
             <label className='data-field-label'>Number of Tracks</label>
-            <div className='data-field-value'>{playlist.total}</div>
+            <div className='data-field-value'>{playlist.tracks.total}</div>
           </div>
         </div>
         <button className='button button-primary'>Future</button>
@@ -28,6 +28,3 @@ function UserPlaylistDetail({playlist}) {
 
 export default UserPlaylistDetail
 
-{/* <>
-<li>{playlist.name}</li>
-</> */}

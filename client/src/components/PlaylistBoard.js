@@ -1,7 +1,7 @@
 import React from 'react'
 import PlaylistDetail from "./PlaylistDetail"
 
-function PlaylistBoard({ playlists }) {
+function PlaylistBoard({ playlists, accessToken}) {
 
   return (
     <div className='content-block content-block-primary'>
@@ -11,7 +11,8 @@ function PlaylistBoard({ playlists }) {
         return <PlaylistDetail
           key={playlists[playlist].title}
           title={playlists[playlist].title}
-          tracks={playlists[playlist].included_tracks} />
+          tracks={playlists[playlist].included_tracks}
+          accessToken={accessToken}/>
       })}
     </div>
   )

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import SettingsBoard from "./SettingsBoard"
 import PlaylistBoard from "./PlaylistBoard"
-import allTrackData from "./allTrackData.json"
 import filter_tracks from '../helper_functions/filter_tracks'
 import { group_tracks } from '../helper_functions/group_tracks'
 
@@ -100,7 +99,7 @@ function Dashboard({ accessToken, groupingSelection, songOrderSelection, filterS
     <div>
       <SettingsBoard groupingSelection={groupingSelection} songOrderSelection={songOrderSelection} filterSelection={filterSelection} />
       {}
-      <PlaylistBoard playlists={grouped_tracks}/>
+      <PlaylistBoard playlists={grouped_tracks} accessToken={accessToken}/>
     </div>
   )
 }
