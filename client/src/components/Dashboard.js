@@ -87,7 +87,7 @@ function Dashboard({ accessToken, groupingSelection, songOrderSelection, filterS
 
   // useEffect(() => {
     const grouped_tracks = group_tracks(filtered_tracks, groupingSelection)
-    setGroupedTracks(grouped_tracks)
+    // setGroupedTracks(grouped_tracks)
 
     console.log('grouped playlists', grouped_tracks)
 
@@ -100,7 +100,7 @@ function Dashboard({ accessToken, groupingSelection, songOrderSelection, filterS
     <div>
       <SettingsBoard groupingSelection={groupingSelection} songOrderSelection={songOrderSelection} filterSelection={filterSelection} />
       {}
-      <PlaylistBoard playlists={groupedTracks}/>
+      <PlaylistBoard playlists={grouped_tracks}/>
     </div>
   )
 }

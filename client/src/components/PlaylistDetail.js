@@ -9,11 +9,14 @@ function PlaylistDetail({ title, tracks }) {
 
   }
 
+console.log ('tracks', tracks)
+// console.log('album image', tracks[0].album.images[0].url)
+
   return (
     <div className='content-block content-block-secondary'>
       <div className='content-block-playlist'>
         <div className='playlist-details'>
-          <img src='https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228' className='playlist-image' />
+          <img src={tracks[0].album.images[0].url}className='playlist-image' />
           <div className='data-field'>
             <label className='data-field-label'>Playlist Name</label>
             <div className='data-field-value'>{title}</div>
@@ -30,11 +33,12 @@ function PlaylistDetail({ title, tracks }) {
       {showTracks ? (<div>
         {
           tracks.map(track => {
-            <TrackDetail
+            return <TrackDetail
               key={track.id}
               name={track.name}
               artist_name={track.artists[0].name}
-              duration={track.duration} />
+              duration={track.duration}
+              image={track.album.images[0].url}/>
           })
         }
       </div>)
@@ -46,3 +50,5 @@ function PlaylistDetail({ title, tracks }) {
 }
 
 export default PlaylistDetail
+
+// 'https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228'
