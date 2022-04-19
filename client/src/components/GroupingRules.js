@@ -1,36 +1,9 @@
 import React, { useState } from 'react'
 import { Link } from "react-router-dom"
+import {grouping_options} from '../settings/grouping_settings'
 import SelectOption from './SelectOption'
 
-const options = [
-    {
-        value: 'year',
-        label: 'The year I saved the song',
-        image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Simple_Music.svg/1200px-Simple_Music.svg.png?20110615130507'
-    }, {
-        value: 'quarter',
-        label: 'The quarter I saved the song',
-        image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Simple_Music.svg/1200px-Simple_Music.svg.png?20110615130507'
-    }, {
-        value: 'month',
-        label: 'The month I saved the song',
-        image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Simple_Music.svg/1200px-Simple_Music.svg.png?20110615130507'
-    }, {
-        value: 'energy',
-        label: 'The energy level of the song',
-        image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Simple_Music.svg/1200px-Simple_Music.svg.png?20110615130507'
-    }, {
-        value: 'instrumentalness',
-        label: 'The instrumentalness of the song',
-        image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Simple_Music.svg/1200px-Simple_Music.svg.png?20110615130507'
-    }, {
-        value: 'popularity',
-        label: 'The popularity of the song',
-        image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Simple_Music.svg/1200px-Simple_Music.svg.png?20110615130507'
-    },
-
-]
-
+const options = grouping_options
 
 function GroupingRules({ handleGroupingSelect, groupingSelection}) {
 
