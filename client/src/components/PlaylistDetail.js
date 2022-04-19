@@ -35,7 +35,7 @@ function PlaylistDetail({ title, tracks, accessToken }) {
   const handleSaveClick = () => {
 
     const createdPlaylist = {
-      "name": title,
+      "name": `TuneStack: ${title}`,
       "description": "TuneStack created"
     }
 
@@ -58,10 +58,10 @@ function PlaylistDetail({ title, tracks, accessToken }) {
       const trackArray = `spotify:track:${track.id}`
       return trackArray})
 
-    console.log('HELLO', newPlaylistTracksIDArray)
+    // console.log('HELLO', newPlaylistTracksIDArray)
 
     const playlistTracksString = `${newPlaylistTracksIDArray.join(',')}`
-    console.log('THE STRING', playlistTracksString)
+    // console.log('THE STRING', playlistTracksString)
 
     fetch(`https://api.spotify.com/v1/playlists/${newPlaylist.id}/tracks?uris=${playlistTracksString}`, {
       method: 'POST',
