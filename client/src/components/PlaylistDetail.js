@@ -6,10 +6,14 @@ function PlaylistDetail({ title, tracks }) {
 
   const handleClick = () => {
     showTracks ? setShowTracks(false) : setShowTracks(true)
+  }
 
+  const handleSaveClick = () => {
+    
   }
 
 console.log ('tracks', tracks)
+console.log('TITLE !!', title)
 // console.log('album image', tracks[0].album.images[0].url)
 
   return (
@@ -28,6 +32,7 @@ console.log ('tracks', tracks)
           </div>
         </div>
         <button className='button button-primary' onClick={handleClick}>{showTracks ? 'Hide Tracks' : 'View Tracks'}</button>
+        <button className='button button-primary'>Save</button>
       </div>
 
       {showTracks ? (<div>
