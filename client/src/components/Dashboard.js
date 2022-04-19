@@ -3,6 +3,7 @@ import SettingsBoard from "./SettingsBoard"
 import PlaylistBoard from "./PlaylistBoard"
 import allTrackData from "./allTrackData.json"
 import filter_tracks from '../helper_functions/filter_tracks'
+import { group_tracks } from '../helper_functions/group_tracks'
 
 function Dashboard({ accessToken, groupingSelection, songOrderSelection, filterSelection }) {
   const [userSavedTracks, setUserSavedTracks] = useState([])
@@ -57,7 +58,7 @@ function Dashboard({ accessToken, groupingSelection, songOrderSelection, filterS
   // console.log(allTrackData)
 
   const basicTrackData = userSavedTracks?.map(item => item.track)
-  console.log(basicTrackData)
+  console.log('basicTrackData', basicTrackData)
 
   const allTrackData = basicTrackData?.map(t1 => {
     // console.log('T1', t1)
@@ -71,7 +72,11 @@ function Dashboard({ accessToken, groupingSelection, songOrderSelection, filterS
   console.log('ALL TRACK DATA BIIIITCH', allTrackData)
   console.log('FILTER SELECTION', filterSelection)
 
-  console.log('filtered array of tracks', filter_tracks(allTrackData, filterSelection))
+  const filtered_tracks = filter_tracks(allTrackData, filterSelection)
+
+  console.log('filtered array of tracks', filtered_tracks)
+
+  const grouped_tracks = group_tracks(filter_tracks, groupingSelection)
 
 
   return (
