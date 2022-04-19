@@ -23,7 +23,7 @@ function Landing({ user, accessToken, isLoggedIn }) {
                 },
             })
             response = await response.json()
-            console.log('SPOTIFY USER', response)
+            // console.log('SPOTIFY USER', response)
             setSpotifyUser(response)
         }
 

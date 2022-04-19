@@ -6,6 +6,7 @@ import { Link } from "react-router-dom"
 function PlaylistDetail({ title, tracks, accessToken}) {
   const [showTracks, setShowTracks] = useState(false);
   const [spotifyUserData, setSpotifyUserData] = useState([])
+  // const [newPlaylist, setNewPlaylist] = useState([])
 
   const handleClick = () => {
     showTracks ? setShowTracks(false) : setShowTracks(true)
@@ -22,7 +23,7 @@ function PlaylistDetail({ title, tracks, accessToken}) {
             },
         })
         response = await response.json()
-        console.log('SPOTIFY USER DATA', response)
+        // console.log('SPOTIFY USER DATA', response)
         setSpotifyUserData(response)
     }
 
@@ -48,12 +49,29 @@ function PlaylistDetail({ title, tracks, accessToken}) {
         body: JSON.stringify(createdPlaylist),
     })
     .then((response) => response.json())
-    .then((data) => console.log('CREATE PLAYLIST', data))
+    .then((data) => addPlaylistTracks(data))
+
 }
 
-console.log ('tracks', tracks)
-console.log('TITLE !!', title)
-// console.log('album image', tracks[0].album.images[0].url)
+const addPlaylistTracks = (newPlaylist) => {
+
+  fetch(`https://api.spotify.com/v1/playlists/${newPlaylist.id}/tracks?uris=spotify:track:60NwgFF3bzbpSmB3cSSAba`, {
+    method: 'POST',
+    headers: {
+      'Accept': "application/json",
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${accessToken}`
+  },
+})
+.then((response) => response.json())
+.then((data) => console.log('ADDED TRACK TO PLAYLIST', data))
+
+}
+
+// console.log ('tracks', tracks)
+// console.log('TITLE !!', title)
+
+
 
   return (
     <div className='content-block content-block-secondary'>

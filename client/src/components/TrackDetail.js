@@ -2,8 +2,6 @@ import React from 'react'
 
 function TrackDetail({name, artist_name, duration, image}) {
 
-console.log('anything')
-
     return (
         <div className='track-detail-container'>
             <img src={image}

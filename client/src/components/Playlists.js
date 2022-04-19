@@ -26,7 +26,7 @@ function Playlists({ accessToken }) {
     }, [accessToken, setUserPlaylists])
 
     const playlists = userPlaylists.items
-    console.log('PLAYLIST ITEMS', playlists)
+    // console.log('PLAYLIST ITEMS', playlists)
 
 
     return (
