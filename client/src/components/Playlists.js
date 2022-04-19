@@ -17,7 +17,7 @@ function Playlists({ accessToken }) {
                 },
             })
             response = await response.json()
-            console.log('USER PLAYLISTS', response)
+            // console.log('USER PLAYLISTS', response)
             setUserPlaylists(response)
         }
 

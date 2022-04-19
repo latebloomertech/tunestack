@@ -19,7 +19,7 @@ const [showTracks, setShowTracks] = useState(false);
             },
         })
         response = await response.json()
-        console.log('USER PLAYLIST TRACKS', response)
+        // console.log('USER PLAYLIST TRACKS', response)
         setUserPlaylistTracks(response)
     }
 
@@ -28,7 +28,7 @@ const [showTracks, setShowTracks] = useState(false);
 }, [accessToken, setUserPlaylistTracks])
 
 const trackDetailInfo = userPlaylistTracks.items
-console.log('TRACK DETAIL INFO', trackDetailInfo)
+// console.log('TRACK DETAIL INFO', trackDetailInfo)
   // console.log('User Playlist Detail', playlist)
 
   const handleClick = () => {
