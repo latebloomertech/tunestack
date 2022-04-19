@@ -56,7 +56,11 @@ function Dashboard({ accessToken, groupingSelection, songOrderSelection, filterS
   // const allTrackData = userSavedTracks?.concat(audioFeaturesData)
   // console.log(allTrackData)
 
-  const basicTrackData = userSavedTracks?.map(item => item.track)
+  const basicTrackData = userSavedTracks?.map(item => {
+    const date_added = new Date(item.added_at)
+    let track = item.track
+    track['added_at'] = date_added
+    return track})
   console.log(basicTrackData)
 
   const allTrackData = basicTrackData?.map(t1 => {
