@@ -9,8 +9,9 @@ function Dashboard({ accessToken, groupingSelection, songOrderSelection, filterS
   const [userSavedTracks, setUserSavedTracks] = useState([])
   const [audioFeaturesData, setAudioFeaturesData] = useState([])
   const [combinedTrackData, setCombinedTrackData] = useState([])
+  const [groupedTracks, setGroupedTracks] = useState({})
 
-
+// INSERT COMMENT WITH A DESCRIPTION OF WHEN THIS IS BEING CALLEED
   useEffect(() => {
     async function fetchMySavedTracks() {
       let response = await fetch('https://api.spotify.com/v1/me/tracks?limit=50&market=US', {
@@ -22,16 +23,17 @@ function Dashboard({ accessToken, groupingSelection, songOrderSelection, filterS
         },
       })
       response = await response.json()
-      console.log(response.items)
+      console.log('fetchMySavedTracks response', response.items)
       setUserSavedTracks(response.items)
     }
 
     fetchMySavedTracks()
 
-  }, [])
+  }, [accessToken])
 
   // accessToken, setUserSavedTracks  [****Add back to above useEffect array if needed*****]
 
+// INSERT COMMENT WITH A DESCRIPTION OF WHEN THIS IS BEING CALLEED
   useEffect(() => {
     async function fetchAudioFeaturesData() {
 
@@ -58,11 +60,13 @@ function Dashboard({ accessToken, groupingSelection, songOrderSelection, filterS
   // console.log(allTrackData)
 
 
+  // INSERT COMMENT WITH A DESCRIPTION OF WHEN THIS IS BEING CALLEED
   const basicTrackData = userSavedTracks?.map(item => {
     const date_added = new Date(item.added_at)
     let track = item.track
     track['added_at'] = date_added
-    return track})
+    return track
+  })
   console.log('basicTrackData', basicTrackData)
 
   const allTrackData = basicTrackData?.map(t1 => {
@@ -74,20 +78,29 @@ function Dashboard({ accessToken, groupingSelection, songOrderSelection, filterS
       return { ...t1 }
     }
   })
-  console.log('ALL TRACK DATA BIIIITCH', allTrackData)
+  console.log('ALL TRACK DATA', allTrackData)
   console.log('FILTER SELECTION', filterSelection)
 
   const filtered_tracks = filter_tracks(allTrackData, filterSelection)
 
   console.log('filtered array of tracks', filtered_tracks)
 
-  const grouped_tracks = group_tracks(filter_tracks, groupingSelection)
+  // useEffect(() => {
+    const grouped_tracks = group_tracks(filtered_tracks, groupingSelection)
+    setGroupedTracks(grouped_tracks)
+
+    console.log('grouped playlists', grouped_tracks)
+
+  // }, [groupingSelection, filtered_tracks, setGroupedTracks, groupedTracks])
+
+
 
 
   return (
     <div>
       <SettingsBoard groupingSelection={groupingSelection} songOrderSelection={songOrderSelection} filterSelection={filterSelection} />
-      <PlaylistBoard />
+      {}
+      <PlaylistBoard playlists={groupedTracks}/>
     </div>
   )
 }
