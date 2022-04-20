@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import TrackDetail from './TrackDetail';
 import { Link } from "react-router-dom"
+import { order_tracks } from '../helper_functions/order_tracks';
+import { group_tracks } from '../helper_functions/group_tracks';
 
-
-function PlaylistDetail({ title, tracks, accessToken }) {
+function PlaylistDetail({ title, tracks, accessToken, songOrderSelection}) {
   const [showTracks, setShowTracks] = useState(false);
+  const [saved, setSaved] = useState()
   const [spotifyUserData, setSpotifyUserData] = useState([])
   // const [newPlaylist, setNewPlaylist] = useState([])
 
@@ -34,6 +36,8 @@ function PlaylistDetail({ title, tracks, accessToken }) {
 
   const handleSaveClick = () => {
 
+    setSaved(true)
+
     const createdPlaylist = {
       "name": `TuneStack: ${title}`,
       "description": "TuneStack created"
@@ -56,7 +60,8 @@ function PlaylistDetail({ title, tracks, accessToken }) {
 
     const newPlaylistTracksIDArray = tracks?.map(track => {
       const trackArray = `spotify:track:${track.id}`
-      return trackArray})
+      return trackArray
+    })
 
     // console.log('HELLO', newPlaylistTracksIDArray)
 
@@ -76,8 +81,10 @@ function PlaylistDetail({ title, tracks, accessToken }) {
 
   }
 
-  // console.log ('tracks', tracks)
-  // console.log('TITLE !!', title)
+  console.log('tracks', tracks)
+
+  const sorted_tracks = order_tracks(tracks, songOrderSelection)
+  console.log('SORTED', sorted_tracks)
 
   return (
     <div className='content-block content-block-secondary'>
@@ -96,7 +103,7 @@ function PlaylistDetail({ title, tracks, accessToken }) {
         </div>
         <button className='button button-primary' onClick={handleClick}>{showTracks ? 'Hide Tracks' : 'View Tracks'}</button>
         <Link to={"/save/confirmation"}>
-          <button className='button button-primary' onClick={handleSaveClick}>Save</button>
+          <button className='button button-primary' onClick={handleSaveClick}>{saved ? 'Saved' : 'Save'}</button>
         </Link>
       </div>
 
@@ -145,3 +152,18 @@ export default PlaylistDetail
 // postTuneStackPlaylist()
 
 // }, [accessToken, spotifyUserData])
+
+// *****BELOW BASIC NAME SORT WORKING******
+  // const sorted_tracks = tracks.sort(function (a, b) {
+  //   const nameA = a.name.toUpperCase(); // ignore upper and lowercase
+  //   const nameB = b.name.toUpperCase(); // ignore upper and lowercase
+  //   if (nameA < nameB) {
+  //     return -1;
+  //   }
+  //   if (nameA > nameB) {
+  //     return 1;
+  //   }
+
+  //   // names must be equal
+  //   return 0;
+  // });
