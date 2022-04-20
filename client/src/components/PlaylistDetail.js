@@ -95,7 +95,7 @@ function PlaylistDetail({ title, tracks, accessToken }) {
           </div>
         </div>
         <button className='button button-primary' onClick={handleClick}>{showTracks ? 'Hide Tracks' : 'View Tracks'}</button>
-        <Link to={"/playlists"}>
+        <Link to={"/save/confirmation"}>
           <button className='button button-primary' onClick={handleSaveClick}>Save</button>
         </Link>
       </div>
