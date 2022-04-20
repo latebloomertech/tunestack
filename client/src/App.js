@@ -9,6 +9,7 @@ import FilteringRules from "./components/FilteringRules"
 import SongOrderRules from "./components/SongOrderRules"
 import Logout from './components/Logout';
 import Playlists from './components/Playlists';
+import Confirmation from './components/Confirmation';
 // import spotify_login from './helper_functions/spotify_login';
 
 
@@ -112,6 +113,8 @@ function App() {
           <Route exact path="/dashboard" element={<Dashboard accessToken={accessToken} groupingSelection={groupingSelection} songOrderSelection={songOrderSelection} filterSelection={filterSelection}/>} />
           <Route exact path="/logout" element={<Logout setAccessToken={setAccessToken} />} />
           <Route exact path="/playlists" element={<Playlists accessToken={accessToken} />} />
+          <Route exact path="/save/confirmation" element={<Confirmation />} />
+
         </Routes>
       </div>
     </BrowserRouter>
