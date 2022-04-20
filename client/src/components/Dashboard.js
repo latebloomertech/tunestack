@@ -10,6 +10,8 @@ function Dashboard({ accessToken, groupingSelection, songOrderSelection, filterS
   const [combinedTrackData, setCombinedTrackData] = useState([])
   const [groupedTracks, setGroupedTracks] = useState({})
 
+  console.log('SONG ORDER', songOrderSelection)
+
 // INSERT COMMENT WITH A DESCRIPTION OF WHEN THIS IS BEING CALLEED
   useEffect(() => {
     async function fetchMySavedTracks() {
@@ -88,7 +90,7 @@ function Dashboard({ accessToken, groupingSelection, songOrderSelection, filterS
     const grouped_tracks = group_tracks(filtered_tracks, groupingSelection)
     // setGroupedTracks(grouped_tracks)
 
-    // console.log('grouped playlists', grouped_tracks)
+    console.log('grouped playlists', grouped_tracks)
 
   // }, [groupingSelection, filtered_tracks, setGroupedTracks, groupedTracks])
 
@@ -99,7 +101,7 @@ function Dashboard({ accessToken, groupingSelection, songOrderSelection, filterS
     <div>
       <SettingsBoard groupingSelection={groupingSelection} songOrderSelection={songOrderSelection} filterSelection={filterSelection} />
       {}
-      <PlaylistBoard playlists={grouped_tracks} accessToken={accessToken}/>
+      <PlaylistBoard playlists={grouped_tracks} accessToken={accessToken} songOrderSelection={songOrderSelection}/>
     </div>
   )
 }
