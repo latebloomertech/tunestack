@@ -8,7 +8,7 @@ function DeleteConfirmation({playlistToDelete, accessToken }) {
     console.log('PLAYLIST TO DELETE', playlistToDelete)
 
 function handleDeleteClick() {
-    fetch(`https://api.spotify.com/v1/playlists/${playlistToDelete}/followers`, {
+    fetch(`https://api.spotify.com/v1/playlists/${playlistToDelete.id}/followers`, {
         method: 'DELETE',
         headers: {
           'Accept': "application/json",
@@ -22,9 +22,11 @@ function handleDeleteClick() {
 
 
     return (
-        <div>
-            <h3>Are you sure you want to delete this playlist?</h3>
+        <div className='landing-and-confirmation-pages'>
+            <h3>Are you sure you want to delete {playlistToDelete.name}?</h3>
+            <Link to={`/delete/finalstep`}>
             <button className='button button-secondary' onClick={handleDeleteClick}>Yes, Delete Playlist</button>
+            </Link>
             <br></br>
             <Link to={`/playlists`}>
                 <button className='button button-secondary'>Show My Spotify Playlists</button>

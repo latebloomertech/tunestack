@@ -2,10 +2,11 @@ import React from 'react'
 import { Link } from "react-router-dom"
 
 
-function Confirmation() {
+
+function DeleteFinalStep() {
     return (
         <div className='landing-and-confirmation-pages'>
-            <h3>Playlist Saved to Spotify</h3>
+            <h3>OK! Playlist Delted</h3>
             <Link to={`/playlists`}>
                 <button className='button button-secondary'>Show My Spotify Playlists</button>
             </Link>
@@ -16,5 +17,4 @@ function Confirmation() {
         </div>
     )
 }
-
-export default Confirmation
+export default DeleteFinalStep

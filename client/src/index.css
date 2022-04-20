@@ -286,7 +286,7 @@ code {
   align-items: flex-end;
 }
 
-.splash {
+.landing-and-confirmation-pages {
   display: flex;
   flex-direction: column;
   justify-content: center;
