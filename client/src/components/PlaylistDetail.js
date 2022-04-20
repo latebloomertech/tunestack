@@ -91,12 +91,12 @@ function PlaylistDetail({ title, tracks, accessToken, songOrderSelection}) {
       <div className='content-block-playlist'>
         <div className='playlist-details'>
           <img src={tracks[0].album.images[0].url} className='playlist-image' />
-          <div className='data-field'>
+          <div className='data-field-name'>
             <label className='data-field-label'>Playlist Name</label>
             <div className='data-field-value'>{title}</div>
           </div>
 
-          <div className='data-field'>
+          <div className='data-field-number'>
             <label className='data-field-label'>Number of Tracks</label>
             <div className='data-field-value'>{tracks.length}</div>
           </div>

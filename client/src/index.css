@@ -198,6 +198,20 @@ code {
 
 .data-field {
   margin-left: 2em;
+  max-width: 16em;
+  min-width: 12em;
+}
+
+.data-field-name {
+  margin-left: 2em;
+  max-width: 12em;
+  min-width: 12em;
+}
+
+.data-field-number {
+  margin-left: 2em;
+  max-width: 16em;
+  /* min-width: 12em; */
 }
 
 .data-field-value {

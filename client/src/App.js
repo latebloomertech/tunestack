@@ -9,7 +9,8 @@ import FilteringRules from "./components/FilteringRules"
 import SongOrderRules from "./components/SongOrderRules"
 import Logout from './components/Logout';
 import Playlists from './components/Playlists';
-import Confirmation from './components/Confirmation';
+import SaveConfirmation from './components/SaveConfirmation';
+import DeleteConfirmation from './components/DeleteConfirmation';
 // import spotify_login from './helper_functions/spotify_login';
 
 
@@ -17,6 +18,7 @@ function App() {
   const [accessToken, setAccessToken] = useState(null)
   const [groupingSelection, setGroupingSelection] = useState()
   const [songOrderSelection, setSongOrderSelection] = useState()
+  const [playlistToDelete, setPlaylistToDelete] = useState([])
   const [filterSelection, setFilterSelection] = useState([
     {
       value: 'danceability',
@@ -83,7 +85,6 @@ function App() {
   function handleSongOrderSelect(value) {
     // console.log(value)
     setSongOrderSelection(value)
-
   }
 
   function handleFilterSelect(value, newSelectedOptions) {
@@ -99,6 +100,11 @@ function App() {
     setAccessToken(null)
   }
 
+  function getPlaylistToDelete(playlist) {
+      setPlaylistToDelete(playlist)
+  }
+
+
   return (
     <BrowserRouter>
       <div className="App">
@@ -112,8 +118,10 @@ function App() {
           <Route exact path="/rules/songorder" element={<SongOrderRules handleSongOrderSelect={handleSongOrderSelect} songOrderSelection={songOrderSelection}/>} />
           <Route exact path="/dashboard" element={<Dashboard accessToken={accessToken} groupingSelection={groupingSelection} songOrderSelection={songOrderSelection} filterSelection={filterSelection}/>} />
           <Route exact path="/logout" element={<Logout setAccessToken={setAccessToken} />} />
-          <Route exact path="/playlists" element={<Playlists accessToken={accessToken} />} />
-          <Route exact path="/save/confirmation" element={<Confirmation />} />
+          <Route exact path="/playlists" element={<Playlists accessToken={accessToken} getPlaylistToDelete={getPlaylistToDelete}/>} />
+          <Route exact path="/save/confirmation" element={<SaveConfirmation />} />
+          <Route exact path="/delete/confirmation" element={<DeleteConfirmation playlistToDelete={playlistToDelete} accessToken={accessToken}/>} />
+
 
         </Routes>
       </div>

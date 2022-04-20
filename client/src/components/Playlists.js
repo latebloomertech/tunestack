@@ -3,7 +3,7 @@ import UserPlaylistDetail from './UserPlaylistDetail';
 
 
 
-function Playlists({ accessToken }) {
+function Playlists({ accessToken, getPlaylistToDelete}) {
     const [userPlaylists, setUserPlaylists] = useState([])
 
     useEffect(() => {
@@ -36,7 +36,8 @@ function Playlists({ accessToken }) {
                 <UserPlaylistDetail
                     key={item.id}
                     playlist={item}
-                    accessToken={accessToken}/>)}</ul>
+                    accessToken={accessToken}
+                    getPlaylistToDelete={getPlaylistToDelete}/>)}</ul>
         </div>
     )
 }

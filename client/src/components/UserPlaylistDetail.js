@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 import TrackDetail from './TrackDetail';
 
 
-function UserPlaylistDetail({playlist, accessToken}) {
+function UserPlaylistDetail({playlist, accessToken, getPlaylistToDelete}) {
 const [userPlaylistTracks, setUserPlaylistTracks] = useState([])
 const [showTracks, setShowTracks] = useState(false);
 
@@ -36,22 +36,30 @@ const trackDetailInfo = userPlaylistTracks.items
   }
 
 
+function handlePlaylistDelete(e) {
+  // console.log(e.target.value)
+  getPlaylistToDelete(playlist.id)
+  }
+
   return (
     <div className='content-block content-block-secondary'>
       <div className='content-block-playlist'>
         <div className='playlist-details'>
           <img src={playlist.images[0].url}className='playlist-image' />
-          <div className='data-field'>
+          <div className='data-field-name'>
             <label className='data-field-label'>Playlist Name</label>
             <div className='data-field-value'>{playlist.name}</div>
           </div>
 
-          <div className='data-field'>
+          <div className='data-field-number'>
             <label className='data-field-label'>Number of Tracks</label>
             <div className='data-field-value'>{playlist.tracks.total}</div>
           </div>
         </div>
         <button className='button button-primary' onClick={handleClick}>{showTracks ? 'Hide Tracks' : 'View Tracks'}</button>
+        <Link to={"/delete/confirmation"}>
+          <button className='button button-primary' value={playlist.id} onClick={handlePlaylistDelete}>Delete</button>
+        </Link>
       </div>
 
       {showTracks ? (<div>
