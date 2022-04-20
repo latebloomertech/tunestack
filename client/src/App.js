@@ -11,6 +11,7 @@ import Logout from './components/Logout';
 import Playlists from './components/Playlists';
 import SaveConfirmation from './components/SaveConfirmation';
 import DeleteConfirmation from './components/DeleteConfirmation';
+import DeleteFinalStep from './components/DeleteFinalStep';
 // import spotify_login from './helper_functions/spotify_login';
 
 
@@ -121,6 +122,7 @@ function App() {
           <Route exact path="/playlists" element={<Playlists accessToken={accessToken} getPlaylistToDelete={getPlaylistToDelete}/>} />
           <Route exact path="/save/confirmation" element={<SaveConfirmation />} />
           <Route exact path="/delete/confirmation" element={<DeleteConfirmation playlistToDelete={playlistToDelete} accessToken={accessToken}/>} />
+          <Route exact path="/delete/finalstep" element={<DeleteFinalStep />} />
 
 
         </Routes>

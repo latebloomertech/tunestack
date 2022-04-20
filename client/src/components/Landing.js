@@ -73,7 +73,7 @@ function Landing({ user, accessToken, isLoggedIn }) {
                     </Link>
                 </div>
             ) : (<div>
-                <div className='splash'>
+                <div className='landing-and-confirmation-pages'>
                     <h2 className='fade-in-text'> Welcome to TuneStack</h2>
 
                     <div className='welcome-paragraph'>

@@ -38,7 +38,7 @@ const trackDetailInfo = userPlaylistTracks.items
 
 function handlePlaylistDelete(e) {
   // console.log(e.target.value)
-  getPlaylistToDelete(playlist.id)
+  getPlaylistToDelete(playlist)
   }
 
   return (
@@ -58,7 +58,7 @@ function handlePlaylistDelete(e) {
         </div>
         <button className='button button-primary' onClick={handleClick}>{showTracks ? 'Hide Tracks' : 'View Tracks'}</button>
         <Link to={"/delete/confirmation"}>
-          <button className='button button-primary' value={playlist.id} onClick={handlePlaylistDelete}>Delete</button>
+          <button className='button button-primary' value={playlist} onClick={handlePlaylistDelete}>Delete</button>
         </Link>
       </div>
 
